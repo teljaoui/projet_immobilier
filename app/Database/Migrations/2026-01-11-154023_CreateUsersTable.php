@@ -10,7 +10,8 @@ class CreateUsersTable extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'auto_increment' => true],
-            'name' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'firstName' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'lastName' => ['type' => 'VARCHAR', 'constraint' => 100],
             'email' => ['type' => 'VARCHAR', 'constraint' => 100, 'unique' => true],
             'password' => ['type' => 'VARCHAR', 'constraint' => 255],
             'role' => ['type' => 'ENUM', 'constraint' => ['client', 'admin'], 'default' => 'client'],
@@ -23,6 +24,6 @@ class CreateUsersTable extends Migration
 
     public function down()
     {
-        //
+        $this->forge->dropTable('users', true);
     }
 }
