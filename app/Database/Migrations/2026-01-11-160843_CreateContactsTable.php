@@ -15,6 +15,7 @@ class CreateContactsTable extends Migration
             'phone_number' => ['type' => 'VARCHAR', 'constraint' => 20],
             'message' => ['type' => 'TEXT'],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('contacts');

@@ -12,6 +12,8 @@ class CreatePropertyImagesTable extends Migration
             'id' => ['type' => 'INT', 'auto_increment' => true],
             'property_id' => ['type' => 'INT'],
             'image' => ['type' => 'VARCHAR', 'constraint' => 255],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('property_id', 'properties', 'id', 'CASCADE', 'CASCADE');
