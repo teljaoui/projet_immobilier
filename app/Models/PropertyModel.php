@@ -4,16 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PropertyTypeModel extends Model
+class PropertyModel extends Model
 {
-    protected $table = 'propertytypes';
+    protected $table = 'properties';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name'
+        'title',
+        'description',
+        'price',
+        'transaction_type',
+        'type_id'
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -45,10 +49,11 @@ class PropertyTypeModel extends Model
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
-    public function properties()
+
+    public function type()
     {
-        $propertyModel = new \App\Models\PropertyModel();
-        return $propertyModel->where('type_id', $this->id)->findAll();
+        $typeModel = new \App\Models\PropertyTypeModel();
+        return $typeModel->find($this->type_id);
     }
 
 }
