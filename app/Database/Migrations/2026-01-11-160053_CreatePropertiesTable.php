@@ -15,6 +15,14 @@ class CreatePropertiesTable extends Migration
             'price' => ['type' => 'DECIMAL', 'constraint' => '10,2'],
             'transaction_type' => ['type' => 'ENUM', 'constraint' => ['vente', 'location'], 'default' => 'vente'],
             'type_id' => ['type' => 'INT'],
+            'surface' => ['type' => 'INT', 'null' => true],
+            'rooms' => ['type' => 'INT', 'null' => true],
+            'bedrooms' => ['type' => 'INT', 'null' => true],
+            'bathrooms' => ['type' => 'INT', 'null' => true],
+            'latitude' => ['type' => 'DECIMAL', 'constraint' => '10,7', 'null' => true],
+            'longitude' => ['type' => 'DECIMAL', 'constraint' => '10,7', 'null' => true],
+            'address' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
@@ -23,8 +31,10 @@ class CreatePropertiesTable extends Migration
         $this->forge->createTable('properties');
     }
 
+
     public function down()
     {
-        //
+        $this->forge->dropTable('properties', true);
+
     }
 }

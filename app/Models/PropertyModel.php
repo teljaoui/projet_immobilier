@@ -17,7 +17,14 @@ class PropertyModel extends Model
         'description',
         'price',
         'transaction_type',
-        'type_id'
+        'type_id',
+        'surface',
+        'rooms',
+        'bedrooms',
+        'bathrooms',
+        'latitude',
+        'longitude',
+        'address',
     ];
 
     protected bool $allowEmptyInserts = false;
