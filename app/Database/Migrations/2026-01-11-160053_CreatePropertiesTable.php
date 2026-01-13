@@ -21,8 +21,8 @@ class CreatePropertiesTable extends Migration
             'bathrooms' => ['type' => 'INT', 'null' => true],
             'latitude' => ['type' => 'DECIMAL', 'constraint' => '10,7', 'null' => true],
             'longitude' => ['type' => 'DECIMAL', 'constraint' => '10,7', 'null' => true],
+            'city' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
             'address' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

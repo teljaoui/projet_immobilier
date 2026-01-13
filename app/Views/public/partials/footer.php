@@ -24,7 +24,7 @@
                               after:h-[1.5px] after:w-0 after:bg-primary
                               after:transition-all after:duration-500
                               hover:after:w-full">
-                            <i class=" fa-solid fa-location-dot"></i> N°9, Résidence Al Khaizourane, Magasin, Rabat
+                            <i class=" fa-solid fa-location-dot"></i> N°9, Magasin, Rabat
                             10000
                         </a>
                     </li>

@@ -12,7 +12,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#ff551a'
+                        primary: '#ff551a',
                     },
                     fontFamily: {
                         rubik: ['Rubik', 'sans-serif'],

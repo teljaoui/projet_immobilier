@@ -9,4 +9,5 @@
 
 body {
     font-family: "Rubik", sans-serif;
+    scroll-behavior: smooth;
 }

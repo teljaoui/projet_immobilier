@@ -24,6 +24,7 @@ class PropertyModel extends Model
         'bathrooms',
         'latitude',
         'longitude',
+        'city',
         'address',
     ];
 

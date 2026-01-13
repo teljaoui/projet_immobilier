@@ -79,9 +79,18 @@
                 </a>
             </li>
         </ul>
-        <a href="/appointment" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition">
-            Connexion
-        </a>
+        <div class="flex items-center gap-4">
+            <a href="/appointment"
+                class="bg-primary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition flex items-center gap-2">
+                <i class="fa-solid fa-user"></i>
+                Connexion
+            </a>
+            <a href="/favorites" class="text-primary text-xl hover:text-orange-600 transition">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+        </div>
+
+
 
     </div>
 
