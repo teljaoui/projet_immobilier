@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<section  class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+<section class="relative h-screen flex items-center  justify-center text-center overflow-hidden">
     <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover opacity-40">
         <source src="<?= base_url('assets/videos/video.mp4') ?>" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo.
@@ -178,17 +178,24 @@
                 <div
                     class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
 
-                    <div class="relative">
-                        <div class="relative h-64 bg-gray-200 overflow-hidden">
+                    <a href="#"
+                        class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
+                        <div
+                            class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
                             <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" alt="Propriété"
-                                class="w-full h-full object-cover">
+                                class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
 
                             <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
                                 <div class="w-2 h-2 bg-white rounded-full shadow"></div>
                                 <div class="w-2 h-2 bg-white/50 rounded-full shadow"></div>
                             </div>
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                <span class="text-white text-3xl bg-primary/80 p-4 rounded-full shadow-lg">
+                                    <i class="fa-solid fa-link"></i>
+                                </span>
+                            </div>
                         </div>
-
                         <div class="absolute top-4 right-4">
                             <span
                                 class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
@@ -196,14 +203,14 @@
                                 À Louer
                             </span>
                         </div>
-
                         <div class="absolute bottom-4 left-4">
                             <span
                                 class="bg-white/95 text-primary px-4 py-2 rounded-lg text-lg font-bold shadow-lg backdrop-blur-sm">
                                 5,500 MAD/mois
                             </span>
                         </div>
-                    </div>
+                    </a>
+
 
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
@@ -255,6 +262,13 @@
 
 
         </div>
+        <div class="flex justify-center mt-12">
+            <a href="<?= base_url('biens') ?>"
+                class="bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-orange-600 transition duration-300">
+                Voir plus de biens
+            </a>
+        </div>
+
     </div>
 </section>
 
