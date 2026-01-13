@@ -61,12 +61,12 @@
                 </a>
             </li>
             <li>
-                <a href="/#services" class="relative hover:text-primary transition duration-500
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[1.5px] after:w-0 after:bg-primary
-          after:transition-all after:duration-500
-          hover:after:w-full">
-                    About
+                <a href="/about" class="relative hover:text-primary transition duration-500
+      after:absolute after:left-0 after:-bottom-2
+      after:h-[1.5px] after:w-0 after:bg-primary
+      after:transition-all after:duration-500
+      hover:after:w-full">
+                    À propos
                 </a>
             </li>
             <li>
