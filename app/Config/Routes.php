@@ -10,4 +10,7 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
     $routes->get('apropos', 'AboutController::index');
     $routes->get('contact', 'ContactController::index');
     $routes->get('biens', 'PropertyController::index');
+
+    $routes->get('connexion', 'LoginController::login');
+    $routes->get('inscription', 'LoginController::register');
 });

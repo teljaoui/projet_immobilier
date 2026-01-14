@@ -80,7 +80,7 @@
             </li>
         </ul>
         <div class="flex items-center gap-4">
-            <a href="/appointment"
+            <a href="/connexion"
                 class="bg-primary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition flex items-center gap-2">
                 <i class="fa-solid fa-user"></i>
                 Connexion
