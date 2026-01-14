@@ -145,6 +145,27 @@
                 </div>
             </div>
         </div>
+        <?php
+        $lat = $property['latitude'] ?? null;
+        $lng = $property['longitude'] ?? null;
+        ?>
+
+        <div class="title text-center mt-12">
+            <h2 class="text-xl font-bold mb-4">
+                Localisation
+            </h2>
+
+            <?php if ($lat && $lng): ?>
+                <div class="bg-white p-3 rounded-lg shadow-sm overflow-hidden h-[300px]">
+                    <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
+                        src="https://maps.google.com/maps?q=<?= $lat ?>,<?= $lng ?>&hl=fr&z=15&output=embed">
+                    </iframe>
+                </div>
+            <?php else: ?>
+                <p class="text-gray-500">Localisation non disponible</p>
+            <?php endif; ?>
+        </div>
+
     </div>
 </section>
 

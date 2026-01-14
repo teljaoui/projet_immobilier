@@ -174,7 +174,6 @@
                 </div>
             </form>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
             <?php if (!empty($properties)): ?>
@@ -192,7 +191,7 @@
                                 class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
                                 <div
                                     class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
-                            <img src="<?= esc($firstImage) ?>" alt="<?= esc($property['title']) ?>"
+                                    <img src="<?= esc($firstImage) ?>" alt="<?= esc($property['title']) ?>"
                                         class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
 
                                     <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
@@ -276,8 +275,6 @@
             <?php endif; ?>
 
         </div>
-
-
 
     </div>
 

@@ -31,6 +31,26 @@ class PropertyController extends BaseController
             'properties' => $properties
         ]);
     }
+    public function index_cart()
+    {
+        $propertyModel = new PropertyModel();
+        $imageModel = new PropertyImageModel();
+        $typeModel = new PropertyTypeModel();
+
+        $properties = $propertyModel->findAll();
+        foreach ($properties as &$property) {
+            $image = $imageModel->where('property_id', $property['id'])->first();
+            $property['image'] = $image['image'] ?? null;
+
+            $type = $typeModel->find($property['type_id']);
+            $property['type_name'] = $type['name'] ?? 'Non défini';
+        }
+
+        return view('public/pages/property_cart', [
+            'title' => 'Nos biens immobiliers',
+            'properties' => $properties
+        ]);
+    }
 
     public function show($id)
     {

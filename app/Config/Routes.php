@@ -10,6 +10,7 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
     $routes->get('apropos', 'AboutController::index');
     $routes->get('contact', 'ContactController::index');
     $routes->get('biens', 'PropertyController::index');
+    $routes->get('catalogue', 'PropertyController::index_cart');
     $routes->get('bien/(:segment)', 'PropertyController::show/$1');
     $routes->get('/favorites', 'FavoritesController::index');
 
