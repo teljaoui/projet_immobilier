@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<section id="about" class="pt-[200px] py-20 bg-gray-100">
+<section id="about" class="pt-[160px] py-20 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4">
         <div class="title text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
