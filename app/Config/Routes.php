@@ -15,4 +15,13 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
 
     $routes->get('connexion', 'LoginController::login');
     $routes->get('inscription', 'LoginController::register');
+
+    $routes->post('inscription_post', 'LoginController::register_post');
+    $routes->post('login', 'LoginController::login_post');
+});
+
+$routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Client'], function ($routes) {
+    $routes->get('', 'ClientController::index');
+    $routes->post('logout', 'LoginController:logout');
+
 });

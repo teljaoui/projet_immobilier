@@ -86,7 +86,8 @@
                     Connexion
                 </a>
             <?php endif; ?>
-            <a href="/favorites" class="text-primary text-xl hover:text-orange-600 transition">
+
+            <a href="<?= site_url('/favorites') ?>" class="text-primary text-xl hover:text-orange-600 transition">
                 <i class="fa-regular fa-heart"></i>
             </a>
         </div>

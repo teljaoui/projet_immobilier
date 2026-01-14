@@ -23,11 +23,12 @@
                     <p class="text-gray-600 text-sm mt-2">Remplissez vos informations pour commencer</p>
                 </div>
 
-                <?php if (session()->getFlashdata('error')): ?>
+                <?php if (session()->getFlashdata('validation')): ?>
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
                         <div class="flex items-center">
                             <i class="fa-solid fa-exclamation-circle text-red-500 mr-3"></i>
-                            <p class="text-red-700 text-sm"><?= session()->getFlashdata('error') ?></p>
+                            <p class="text-red-700 text-sm"> <?php $validation = session()->getFlashdata('validation'); ?>
+                            </p>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -41,10 +42,9 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('register') ?>" method="POST" class="space-y-6">
+                <form action="<?= base_url('inscription_post') ?>" method="POST" class="space-y-6">
                     <?= csrf_field() ?>
 
-                    <!-- Ligne avec Prénom et Nom -->
                     <div class="flex gap-4">
                         <div class="flex-1">
                             <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
@@ -67,7 +67,6 @@
                         </div>
                     </div>
 
-                    <!-- Email -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Adresse email</label>
                         <input type="email" id="email" name="email" required value="<?= old('email') ?>"
@@ -78,15 +77,21 @@
                         <?php endif; ?>
                     </div>
 
-                    <!-- Password -->
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
-                        <input type="password" id="password" name="password" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="••••••••">
+                        <div class="relative">
+                            <input type="password" id="password" name="password" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition pr-12"
+                                placeholder="••••••••">
+                            <button type="button" id="togglePassword"
+                                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition">
+                                <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                            </button>
+                        </div>
                         <?php if (isset($validation) && $validation->hasError('password')): ?>
                             <p class="text-red-500 text-xs mt-1"><?= $validation->getError('password') ?></p>
                         <?php endif; ?>
+
                     </div>
 
                     <button type="submit"
