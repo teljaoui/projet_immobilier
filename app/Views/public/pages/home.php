@@ -82,10 +82,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-building text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4  font-medium mb-2 uppercase tracking-wide">
                     Vente de biens
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Nous proposons une large sélection de propriétés à vendre dans toute la ville.
                 </p>
             </div>
@@ -95,10 +95,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-key text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4 font-medium mb-2 uppercase tracking-wide">
                     Location de biens
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Découvrez notre catalogue de biens disponibles à la location, pour court ou long terme.
                 </p>
             </div>
@@ -108,10 +108,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-house-chimney-user text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4  font-medium mb-2 uppercase tracking-wide">
                     Gestion locative
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Nous prenons en charge la gestion complète de vos biens locatifs, du suivi des loyers à l’entretien.
                 </p>
             </div>
@@ -121,10 +121,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-house-crack text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4  font-medium mb-2 uppercase tracking-wide">
                     Estimation immobilière
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Obtenez une estimation précise de la valeur de votre bien immobilier grâce à nos experts.
                 </p>
             </div>
@@ -134,10 +134,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-handshake text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4  font-medium mb-2 uppercase tracking-wide">
                     Conseil en investissement
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Nos conseillers vous accompagnent pour investir intelligemment dans l’immobilier.
                 </p>
             </div>
@@ -147,10 +147,10 @@
                 <div class="inline-block text-primary rounded-lg p-4 mb-4 shadow-sm">
                     <i class="fa-solid fa-file-contract text-4xl"></i>
                 </div>
-                <h3 class="text-2xl pl-4 md:text-3xl font-medium mb-2 uppercase tracking-wide">
+                <h3 class="text-2xl pl-4  font-medium mb-2 uppercase tracking-wide">
                     Transactions immobilières
                 </h3>
-                <p class="text-gray-600 pl-4 text-sm md:text-base">
+                <p class="text-gray-600 pl-4 text-base">
                     Nous facilitons toutes vos transactions immobilières en toute sécurité et transparence.
                 </p>
             </div>

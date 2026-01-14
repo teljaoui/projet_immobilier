@@ -43,38 +43,29 @@
         </a>
         <ul class="flex gap-10 text-lg font-medium">
             <li>
-                <a href="/" class="relative hover:text-primary transition duration-500
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[1.5px] after:w-0 after:bg-primary
-          after:transition-all after:duration-500
-          hover:after:w-full">
+                <a href="/" class="relative transition duration-500
+           after:absolute after:left-0 after:-bottom-2 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500
+           <?= uri_string() == '' ? 'text-primary after:w-full' : 'hover:text-primary hover:after:w-full' ?>">
                     Accueil
                 </a>
             </li>
             <li>
-                <a href="/#services" class="relative hover:text-primary transition duration-500
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[1.5px] after:w-0 after:bg-primary
-          after:transition-all after:duration-500
-          hover:after:w-full">
+                <a href="/#services" class="relative transition duration-500
+           after:absolute after:left-0 after:-bottom-2 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500">
                     Services
                 </a>
             </li>
             <li>
-                <a href="/apropos" class="relative hover:text-primary transition duration-500
-      after:absolute after:left-0 after:-bottom-2
-      after:h-[1.5px] after:w-0 after:bg-primary
-      after:transition-all after:duration-500
-      hover:after:w-full">
+                <a href="/apropos" class="relative transition duration-500
+           after:absolute after:left-0 after:-bottom-2 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500
+           <?= uri_string() == 'apropos' ? 'text-primary after:w-full' : 'hover:text-primary hover:after:w-full' ?>">
                     À propos
                 </a>
             </li>
             <li>
-                <a href="/contact" class="relative hover:text-primary transition duration-500
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[1.5px] after:w-0 after:bg-primary
-          after:transition-all after:duration-500
-          hover:after:w-full">
+                <a href="/contact" class="relative transition duration-500
+           after:absolute after:left-0 after:-bottom-2 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500
+           <?= uri_string() == 'contact' ? 'text-primary after:w-full' : 'hover:text-primary hover:after:w-full' ?>">
                     Contact
                 </a>
             </li>
