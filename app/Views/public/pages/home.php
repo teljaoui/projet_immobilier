@@ -26,8 +26,8 @@
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
                         <option value="">Type de bien</option>
                         <?php /* foreach ($types as $type): ?>
-<option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-<?php endforeach; */ ?>
+                       <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                       <?php endforeach; */ ?>
                     </select>
                 </div>
                 <div class="md:col-span-3">
@@ -39,8 +39,12 @@
                     </select>
                 </div>
                 <div class="md:col-span-4">
-                    <input type="text" name="address" placeholder="Ville ou quartier"
+                    <select name="transaction_type"
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
+                        <option value="">Ville</option>
+                        <option value="vente">Rabat</option>
+                        <option value="location">Temara</option>
+                    </select>
                 </div>
                 <div class="md:col-span-1 flex items-center">
                     <button type="submit"
@@ -61,7 +65,7 @@
             <h2 class="text-3xl font-bold mb-2">
                 Nos <span class="text-primary">Services</span>
             </h2>
-            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-6">
+            <p class="text-gray-600 max-w-4xl  mx-auto text-sm md:text-base mb-6">
                 Nous accompagnons nos clients à chaque étape de leur projet immobilier, que ce soit pour acheter,
                 vendre, louer ou investir.
                 Notre expertise et notre savoir-faire vous garantissent des solutions fiables et personnalisées.
@@ -163,7 +167,7 @@
             <h2 class="text-3xl font-bold mb-2">
                 Derniers <span class="text-primary">Biens Ajoutés</span>
             </h2>
-            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-6">
+            <p class="text-gray-600 max-w-4xl  mx-auto text-sm md:text-base mb-6">
                 Découvrez nos derniers biens immobiliers ajoutés à notre catalogue, soigneusement sélectionnés pour
                 vous.
             </p>

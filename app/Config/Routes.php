@@ -9,4 +9,5 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
     $routes->get('/', 'HomeController::index');
     $routes->get('apropos', 'AboutController::index');
     $routes->get('contact', 'ContactController::index');
+    $routes->get('biens', 'PropertyController::index');
 });

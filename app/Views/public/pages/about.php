@@ -1,15 +1,14 @@
 <?= $this->extend('public/layouts/main') ?>
-<title><?= esc($title ?? '   À propos de nous') ?></title>
 
 <?= $this->section('content') ?>
 
 <section id="about" class="pt-[160px] py-20 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4">
         <div class="title text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <h2 class="text-3xl  font-bold mb-4">
                 À propos de <span class="text-primary">nous</span>
             </h2>
-            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-6">
+            <p class="text-gray-600 max-w-4xl  mx-auto text-sm md:text-base mb-6">
                 Nous sommes une agence immobilière engagée à accompagner nos clients à chaque étape de leur projet,
                 qu'il s'agisse d’acheter, de vendre, de louer ou d’investir dans l’immobilier.
             </p>

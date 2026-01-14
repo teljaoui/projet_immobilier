@@ -14,3 +14,24 @@ html {
 body {
     font-family: "Rubik", sans-serif;
 }
+
+
+keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
