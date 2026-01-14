@@ -18,10 +18,10 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
 
     $routes->post('inscription_post', 'LoginController::register_post');
     $routes->post('login', 'LoginController::login_post');
+    $routes->post('logout', 'LoginController::logout', ['filter' => 'auth']);
 });
+
 
 $routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Client'], function ($routes) {
     $routes->get('', 'ClientController::index');
-    $routes->post('logout', 'LoginController:logout');
-
 });

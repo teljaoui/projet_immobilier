@@ -107,13 +107,15 @@ class LoginController extends BaseController
             return redirect()->to('/admin/dashboard');
         }
 
+        session()->setFlashdata('success', 'Connexion réussie !');
+
         return redirect()->to('/client');
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login')
+        return redirect()->to('/connexion')
             ->with('success', 'Déconnexion réussie.');
     }
 }

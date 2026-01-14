@@ -48,7 +48,7 @@
                 </div>
                 <div class="md:col-span-1 flex items-center">
                     <button type="submit"
-                        class="w-full bg-gray-900 text-white p-3 rounded-lg hover:bg-gray-800 transition duration-500 flex items-center justify-center">
+                        class="w-full bg-gray-900 hover:bg-gray-800 text-white p-3 rounded-lg  transition duration-500 flex items-center justify-center">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
