@@ -9,6 +9,9 @@ class ContactController extends BaseController
 {
     public function index()
     {
-        //
+        return view('public/pages/contact', [
+            'title' => 'Contact | Agence Immobilière'
+        ])
+        ;
     }
 }

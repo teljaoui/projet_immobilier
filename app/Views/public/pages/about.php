@@ -1,4 +1,5 @@
 <?= $this->extend('public/layouts/main') ?>
+<title><?= esc($title ?? '   À propos de nous') ?></title>
 
 <?= $this->section('content') ?>
 

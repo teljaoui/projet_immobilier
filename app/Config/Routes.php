@@ -7,6 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes) {
     $routes->get('/', 'HomeController::index');
-    $routes->get('about', 'AboutController::index');
+    $routes->get('apropos', 'AboutController::index');
     $routes->get('contact', 'ContactController::index');
 });

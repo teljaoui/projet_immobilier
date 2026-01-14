@@ -61,7 +61,7 @@
                 </a>
             </li>
             <li>
-                <a href="/about" class="relative hover:text-primary transition duration-500
+                <a href="/apropos" class="relative hover:text-primary transition duration-500
       after:absolute after:left-0 after:-bottom-2
       after:h-[1.5px] after:w-0 after:bg-primary
       after:transition-all after:duration-500
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li>
-                <a href="/#contact" class="relative hover:text-primary transition duration-500
+                <a href="/contact" class="relative hover:text-primary transition duration-500
           after:absolute after:left-0 after:-bottom-2
           after:h-[1.5px] after:w-0 after:bg-primary
           after:transition-all after:duration-500
