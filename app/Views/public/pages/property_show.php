@@ -17,6 +17,7 @@
                 <hr class="w-20 border-t-4 border-primary rounded">
             </div>
         </div>
+        <div id="alert-container" class="flex py-2 w-full space-y-3"></div>
         <div class="flex flex-col md:flex-row items-start gap-8">
             <div class="md:w-1/2 w-full">
                 <div class="swiper propertySwiper rounded-lg overflow-hidden shadow-lg">
@@ -131,8 +132,14 @@
                         <i class="fa-solid fa-phone mr-2"></i>
                         Contacter
                     </button>
-                    <button
-                        class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition">
+                    <button onclick="toggleFavorite(<?= htmlspecialchars(json_encode([
+                        'id' => $property['id'] ?? uniqid(),
+                        'title' => $property['title'] ?? '',
+                        'city' => $property['city'] ?? '',
+                        'price' => $property['price'] ?? 0,
+                        'image' => !empty($property['images']) && is_array($property['images']) ? $property['images'][0] : base_url('assets/img/placeholder.jpg')
+                    ]), ENT_QUOTES, 'UTF-8') ?>)" id="favorite-btn-<?= esc($property['id'] ?? uniqid()) ?>"
+                        class="favorite-btn bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition">
                         <i class="fa-solid fa-heart"></i>
                     </button>
                 </div>
