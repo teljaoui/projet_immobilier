@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PropertyImageModel extends Model
 {
-    protected $table = 'propertyimages';
+    protected $table = 'property_images';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';

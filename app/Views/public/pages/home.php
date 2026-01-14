@@ -26,8 +26,8 @@
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
                         <option value="">Type de bien</option>
                         <?php /* foreach ($types as $type): ?>
-                       <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                       <?php endforeach; */ ?>
+                  <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                  <?php endforeach; */ ?>
                     </select>
                 </div>
                 <div class="md:col-span-3">
@@ -178,92 +178,109 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-            <div class="max-w-sm mx-auto mt-8">
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
-
-                    <a href="#"
-                        class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
+            <?php if (!empty($properties)): ?>
+                <?php foreach ($properties as $property): ?>
+                  <?php
+                    $firstImage = !empty($property['image'])
+                        ? base_url('assets/img/uploads/' . $property['image'])
+                        : base_url('assets/img/placeholder.jpg'); 
+                    ?>
+                    
+                    <div class="max-w-sm mx-auto mx-h-100 mt-8">
                         <div
-                            class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" alt="Propriété"
-                                class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
+                            class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
 
-                            <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-                                <div class="w-2 h-2 bg-white rounded-full shadow"></div>
-                                <div class="w-2 h-2 bg-white/50 rounded-full shadow"></div>
-                            </div>
-                            <div
-                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-                                <span class="text-white text-3xl bg-primary/80 p-4 rounded-full shadow-lg">
-                                    <i class="fa-solid fa-link"></i>
-                                </span>
+                            <a href="<?= base_url('bien/' . $property['id']) ?>"
+                                class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
+                                <div
+                                    class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
+                                    <img src="<?= esc($firstImage) ?>" alt="<?= esc($property['title']) ?>"
+                                        class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
+
+                                    <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+                                        <div class="w-2 h-2 bg-white rounded-full shadow"></div>
+                                        <div class="w-2 h-2 bg-white/50 rounded-full shadow"></div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                        <span class="text-white text-3xl bg-primary/80 p-4 rounded-full shadow-lg">
+                                            <i class="fa-solid fa-link"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
+                                        <?= esc($property['type_name']) ?>
+                                    </span>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
+                                        <i class="fa-solid fa-key mr-1"></i>
+                                        <?= esc($property['transaction_type']) ?>
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-4 left-4">
+                                    <span
+                                        class="bg-white/95 text-primary px-4 py-2 rounded-lg text-lg font-bold shadow-lg backdrop-blur-sm">
+                                        <?= number_format($property['price'], 0, ',', ' ') ?> MAD
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-4 right-4">
+                                    <span
+                                        class="bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-normal shadow-sm backdrop-blur-sm">
+                                        Nouveau
+                                    </span>
+                                </div>
+                            </a>
+
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
+                                    <?= esc(mb_strimwidth($property['title'], 0, 25, '...')) ?>
+                                </h3>
+
+                                <div class="grid grid-cols-2 gap-4 mb-4 border-b border-gray-100">
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-expand text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Surface</p>
+                                            <p class="font-semibold"><?= esc($property['surface'] ?? '-') ?> m²</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-bed text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Chambres</p>
+                                            <p class="font-semibold"><?= esc($property['bedrooms'] ?? '-') ?> Chambres</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-bath text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Salles de bain</p>
+                                            <p class="font-semibold"><?= esc($property['bathrooms'] ?? '-') ?> Bains</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-location-dot text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Localisation</p>
+                                            <p class="font-semibold"><?= esc($property['city'] ?? '-') ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="absolute top-4 right-4">
-                            <span
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
-                                <i class="fa-solid fa-key mr-1"></i>
-                                À Louer
-                            </span>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span
-                                class="bg-white/95 text-primary px-4 py-2 rounded-lg text-lg font-bold shadow-lg backdrop-blur-sm">
-                                5,500 MAD/mois
-                            </span>
-                        </div>
-                    </a>
-
-
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
-                            Villa Spacieuse avec Jardin
-                        </h3>
-
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            Belle villa avec un grand jardin, parfaite pour une famille.
-                            Quartier sécurisé avec parking privé inclus.
-                        </p>
-
-                        <div class="grid grid-cols-2 gap-4 mb-4  border-b border-gray-100">
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-expand text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Surface</p>
-                                    <p class="font-semibold">250 m²</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-bed text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Chambres</p>
-                                    <p class="font-semibold">4 Chambres</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-bath text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Salles de bain</p>
-                                    <p class="font-semibold">3 Bains</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-location-dot text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Localisation</p>
-                                    <p class="font-semibold">Rabat</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-            </div>
-
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="col-span-full text-center text-gray-500 mt-12">Aucun bien trouvé.</p>
+            <?php endif; ?>
 
         </div>
         <div class="flex justify-center mt-12">

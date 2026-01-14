@@ -29,12 +29,11 @@
                 <i class="fa-solid fa-chevron-down transition-transform duration-300" id="filterIcon"></i>
             </button>
         </div>
-        <div id="filterForm" class="bg-white rounded-lg shadow-lg p-6 mb-10 hidden overflow-hidden transition-all duration-500">
+        <div id="filterForm"
+            class="bg-white rounded-lg shadow-lg p-6 mb-10 hidden overflow-hidden transition-all duration-500">
             <form action="<?= base_url('properties') ?>" method="GET" class="space-y-6">
 
-                <!-- Ligne 1: Type de transaction et Type de bien -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Type de transaction -->
                     <div>
                         <label for="transaction_type" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-handshake text-primary mr-1"></i>
@@ -47,8 +46,6 @@
                             <option value="location" <?= (isset($_GET['transaction_type']) && $_GET['transaction_type'] == 'location') ? 'selected' : '' ?>>Location</option>
                         </select>
                     </div>
-
-                    <!-- Type de bien -->
                     <div>
                         <label for="type_id" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-building text-primary mr-1"></i>
@@ -68,9 +65,7 @@
                     </div>
                 </div>
 
-                <!-- Ligne 2: Ville et Fourchette de prix -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Ville -->
                     <div>
                         <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-map-marker-alt text-primary mr-1"></i>
@@ -88,8 +83,6 @@
                             <option value="Agadir" <?= (isset($_GET['city']) && $_GET['city'] == 'Agadir') ? 'selected' : '' ?>>Agadir</option>
                         </select>
                     </div>
-
-                    <!-- Prix minimum -->
                     <div>
                         <label for="price_min" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-money-bill-wave text-primary mr-1"></i>
@@ -100,8 +93,6 @@
                             placeholder="Ex: 500000"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
-
-                    <!-- Prix maximum -->
                     <div>
                         <label for="price_max" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-money-bill-wave text-primary mr-1"></i>
@@ -113,10 +104,7 @@
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
                 </div>
-
-                <!-- Ligne 3: Caractéristiques (Surface, Chambres, Salles de bain) -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <!-- Surface minimum -->
                     <div>
                         <label for="surface_min" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-expand text-primary mr-1"></i>
@@ -127,8 +115,6 @@
                             placeholder="Ex: 50"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
-
-                    <!-- Chambres minimum -->
                     <div>
                         <label for="bedrooms_min" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-bed text-primary mr-1"></i>
@@ -144,8 +130,6 @@
                             <option value="5" <?= (isset($_GET['bedrooms_min']) && $_GET['bedrooms_min'] == '5') ? 'selected' : '' ?>>5+</option>
                         </select>
                     </div>
-
-                    <!-- Salles de bain minimum -->
                     <div>
                         <label for="bathrooms_min" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-bath text-primary mr-1"></i>
@@ -160,8 +144,6 @@
                             <option value="4" <?= (isset($_GET['bathrooms_min']) && $_GET['bathrooms_min'] == '4') ? 'selected' : '' ?>>4+</option>
                         </select>
                     </div>
-
-                    <!-- Pièces minimum -->
                     <div>
                         <label for="rooms_min" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-door-open text-primary mr-1"></i>
@@ -178,8 +160,6 @@
                         </select>
                     </div>
                 </div>
-
-                <!-- Boutons d'action -->
                 <div class="flex flex-col sm:flex-row gap-3 pt-4">
                     <button type="submit"
                         class="flex-1 bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2">
@@ -195,97 +175,111 @@
             </form>
         </div>
 
-
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-            <div class="max-w-sm mx-auto mt-8">
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
-
-                    <a href="#"
-                        class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
+            <?php if (!empty($properties)): ?>
+                <?php foreach ($properties as $property): ?>
+                    <?php
+                    $firstImage = !empty($property['image'])
+                        ? base_url('assets/img/uploads/' . $property['image'])
+                        : base_url('assets/img/placeholder.jpg');
+                    ?>
+                    <div class="max-w-sm mx-auto mx-h-100 mt-8">
                         <div
-                            class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" alt="Propriété"
-                                class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
+                            class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
 
-                            <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-                                <div class="w-2 h-2 bg-white rounded-full shadow"></div>
-                                <div class="w-2 h-2 bg-white/50 rounded-full shadow"></div>
-                            </div>
-                            <div
-                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-                                <span class="text-white text-3xl bg-primary/80 p-4 rounded-full shadow-lg">
-                                    <i class="fa-solid fa-link"></i>
-                                </span>
+                            <a href="<?= base_url('bien/' . $property['id']) ?>"
+                                class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
+                                <div
+                                    class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
+                            <img src="<?= esc($firstImage) ?>" alt="<?= esc($property['title']) ?>"
+                                        class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
+
+                                    <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+                                        <div class="w-2 h-2 bg-white rounded-full shadow"></div>
+                                        <div class="w-2 h-2 bg-white/50 rounded-full shadow"></div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                        <span class="text-white text-3xl bg-primary/80 p-4 rounded-full shadow-lg">
+                                            <i class="fa-solid fa-link"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
+                                        <?= esc($property['type_name']) ?>
+                                    </span>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
+                                        <i class="fa-solid fa-key mr-1"></i>
+                                        <?= esc($property['transaction_type']) ?>
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-4 left-4">
+                                    <span
+                                        class="bg-white/95 text-primary px-4 py-2 rounded-lg text-lg font-bold shadow-lg backdrop-blur-sm">
+                                        <?= number_format($property['price'], 0, ',', ' ') ?> MAD
+                                    </span>
+                                </div>
+
+                            </a>
+
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
+                                    <?= esc(mb_strimwidth($property['title'], 0, 25, '...')) ?>
+                                </h3>
+
+                                <div class="grid grid-cols-2 gap-4 mb-4 border-b border-gray-100">
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-expand text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Surface</p>
+                                            <p class="font-semibold"><?= esc($property['surface'] ?? '-') ?> m²</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-bed text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Chambres</p>
+                                            <p class="font-semibold"><?= esc($property['bedrooms'] ?? '-') ?> Chambres</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-bath text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Salles de bain</p>
+                                            <p class="font-semibold"><?= esc($property['bathrooms'] ?? '-') ?> Bains</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-700">
+                                        <i class="fa-solid fa-location-dot text-primary"></i>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Localisation</p>
+                                            <p class="font-semibold"><?= esc($property['city'] ?? '-') ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="absolute top-4 right-4">
-                            <span
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm">
-                                <i class="fa-solid fa-key mr-1"></i>
-                                À Louer
-                            </span>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span
-                                class="bg-white/95 text-primary px-4 py-2 rounded-lg text-lg font-bold shadow-lg backdrop-blur-sm">
-                                5,500 MAD/mois
-                            </span>
-                        </div>
-                    </a>
-
-
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
-                            Villa Spacieuse avec Jardin
-                        </h3>
-
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            Belle villa avec un grand jardin, parfaite pour une famille.
-                            Quartier sécurisé avec parking privé inclus.
-                        </p>
-
-                        <div class="grid grid-cols-2 gap-4 mb-4  border-b border-gray-100">
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-expand text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Surface</p>
-                                    <p class="font-semibold">250 m²</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-bed text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Chambres</p>
-                                    <p class="font-semibold">4 Chambres</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-bath text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Salles de bain</p>
-                                    <p class="font-semibold">3 Bains</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-location-dot text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Localisation</p>
-                                    <p class="font-semibold">Rabat</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-            </div>
-
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="col-span-full text-center text-gray-500 mt-12">Aucun bien trouvé.</p>
+            <?php endif; ?>
 
         </div>
+
+
+
+    </div>
 
     </div>
 </section>

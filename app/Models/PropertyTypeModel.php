@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PropertyTypeModel extends Model
 {
-    protected $table = 'propertytypes';
+    protected $table = 'property_types';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
