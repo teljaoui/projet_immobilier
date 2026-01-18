@@ -23,7 +23,7 @@
                 <a href="<?= base_url('admin/biens') ?>"
                    class="relative transition duration-500
                    after:absolute after:left-0 after:-bottom-2 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500
-                   <?= uri_string() === 'admin/biens' ? 'text-primary after:w-full' : 'hover:text-primary hover:after:w-full' ?>">
+                   <?= uri_string() === 'admin/biens'  ? 'text-primary after:w-full' : 'hover:text-primary hover:after:w-full' ?>">
                     Biens immobiliers
                 </a>
             </li>

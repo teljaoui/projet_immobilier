@@ -299,3 +299,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+function previewImages(event) {
+    const preview = document.getElementById('imagePreview');
+    preview.innerHTML = '';
+    
+    const files = event.target.files;
+    
+    if (files.length > 0) {
+        Array.from(files).forEach((file, index) => {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const div = document.createElement('div');
+                div.className = 'relative group';
+                div.innerHTML = `
+                    <img src="${e.target.result}" class="w-full h-32 object-cover rounded-lg shadow">
+                    <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition">
+                        <button type="button" onclick="removeImage(${index})" class="text-red-500 hover:text-red-700 w-6 h-6 flex items-center justify-center">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+                        Image ${index + 1}
+                    </div>
+                `;
+                preview.appendChild(div);
+            };
+            
+            reader.readAsDataURL(file);
+        });
+    }
+}
+
+function removeImage(index) {
+    const input = document.getElementById('images');
+    const dt = new DataTransfer();
+    const files = input.files;
+    
+    for (let i = 0; i < files.length; i++) {
+        if (i !== index) {
+            dt.items.add(files[i]);
+        }
+    }
+    
+    input.files = dt.files;
+    previewImages({ target: input });
+}

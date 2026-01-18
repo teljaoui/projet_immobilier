@@ -27,10 +27,32 @@ $routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Cl
     $routes->get('/', 'ClientController::index');
 });
 
-$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
-    $routes->get('/', 'AdminController::index');
-    $routes->get('biens', 'PropertyController::index');
-    $routes->get('messages', 'MessageController::index');
-    $routes->get('utilisateurs', 'UserController::index');
+$routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admin'], function ($routes) {
+
+    $routes->get('/', 'DashboardController::index');
+
+    $routes->group('biens', function ($routes) {
+        $routes->get('/', 'PropertyController::index');     
+        $routes->get('create', 'PropertyController::create'); 
+        $routes->post('store', 'PropertyController::store'); 
+        $routes->get('edit/(:num)', 'PropertyController::edit/$1');
+        $routes->post('update/(:num)', 'PropertyController::update/$1');
+        $routes->post('delete/(:num)', 'PropertyController::delete/$1');
+    });
+
+    $routes->group('messages', function ($routes) {
+        $routes->get('/', 'MessageController::index');        
+        $routes->get('show/(:num)', 'MessageController::show/$1');
+        $routes->post('delete/(:num)', 'MessageController::delete/$1');
+    });
+
+    $routes->group('utilisateurs', function ($routes) {
+        $routes->get('/', 'UserController::index');
+        $routes->get('create', 'UserController::create');
+        $routes->post('store', 'UserController::store');
+        $routes->get('edit/(:num)', 'UserController::edit/$1');
+        $routes->post('update/(:num)', 'UserController::update/$1');
+        $routes->post('delete/(:num)', 'UserController::delete/$1');
+    });
 
 });
