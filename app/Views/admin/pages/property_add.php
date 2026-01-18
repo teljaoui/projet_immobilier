@@ -223,7 +223,7 @@
                                     class="hidden" onchange="previewImages(event)">
                                 <label for="images" class="cursor-pointer">
                                     <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
-                                    <p class="text-gray-600 mb-2">Cliquez pour sélectionner des images</p>
+                                    <p class="text-gray-600 mb-2">Cliquez pour sélectionner une image</p>
                                     <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB par image)</p>
                                 </label>
                             </div>

@@ -14,7 +14,8 @@ class PropertyImageModel extends Model
     protected $protectFields = true;
     protected $allowedFields = [
         'property_id',
-        'image'
+        'image',
+        'is_main'
     ];
 
     protected bool $allowEmptyInserts = false;

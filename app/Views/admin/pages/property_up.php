@@ -221,15 +221,14 @@
                                         <img src="<?= base_url($img['image']) ?>" alt="Image du bien"
                                             class="w-full h-32 object-cover rounded-lg">
                                         <a href="<?= base_url('admin/biens/delete_image/' . $img['id']) ?>"
-                                            class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100"
-                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">
+                                             class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">
                                             <i class="fa-solid fa-x"></i>
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-
+                                    
 
                         <div
                             class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#ff551a] transition">

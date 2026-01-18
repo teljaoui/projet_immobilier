@@ -112,7 +112,8 @@ class PropertyController extends BaseController
 
             $imageModel->insert([
                 'property_id' => $propertyId,
-                'image' => 'assets/img/uploads/' . $mainName
+                'image' => 'assets/img/uploads/' . $mainName,
+                'is_main' => 1,
             ]);
         }
 
@@ -124,7 +125,8 @@ class PropertyController extends BaseController
 
                 $imageModel->insert([
                     'property_id' => $propertyId,
-                    'image' => 'assets/img/uploads/' . $newName
+                    'image' => 'assets/img/uploads/' . $newName,
+                    'is_main' => 0
                 ]);
             }
         }
@@ -223,12 +225,15 @@ class PropertyController extends BaseController
 
         $mainImage = $this->request->getFile('main_image');
         if ($mainImage && $mainImage->isValid() && !$mainImage->hasMoved()) {
+            $imageModel->where('property_id', $id)->set(['is_main' => 0])->update();
+
             $mainName = $mainImage->getRandomName();
             $mainImage->move('assets/img/uploads/', $mainName);
 
             $imageModel->insert([
                 'property_id' => $id,
-                'image' => 'assets/img/uploads/' . $mainName
+                'image' => 'assets/img/uploads/' . $mainName,
+                'is_main' => 1
             ]);
         }
 
@@ -240,7 +245,8 @@ class PropertyController extends BaseController
 
                 $imageModel->insert([
                     'property_id' => $id,
-                    'image' => 'assets/img/uploads/' . $newName
+                    'image' => 'assets/img/uploads/' . $newName,
+                    'is_main' => 0
                 ]);
             }
         }
