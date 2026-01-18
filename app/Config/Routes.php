@@ -38,6 +38,7 @@ $routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admi
         $routes->get('edit/(:num)', 'PropertyController::edit/$1');
         $routes->post('update/(:num)', 'PropertyController::update/$1');
         $routes->get('delete/(:num)', 'PropertyController::delete/$1');
+        $routes->get('delete_image/(:num)', 'PropertyController::delete_image/$1');
     });
 
     $routes->group('messages', function ($routes) {

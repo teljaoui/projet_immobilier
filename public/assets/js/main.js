@@ -298,6 +298,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function previewMainImage(event) {
+    const preview = document.getElementById('mainImagePreview');
+    preview.innerHTML = '';
+    
+    const file = event.target.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const div = document.createElement('div');
+            div.className = 'relative inline-block';
+            div.innerHTML = `
+                <img src="${e.target.result}" class="h-48 w-auto object-cover rounded-lg shadow-lg ring-4 ring-[#ff551a]">
+                <div class="absolute top-2 left-2 bg-[#ff551a] text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
+                    <i class="fa-solid fa-star"></i>
+                    Image principale
+                </div>
+                <button type="button" onclick="removeMainImage()" 
+                    class="absolute top-2 right-2 bg-white rounded-full p-2 text-red-500 hover:text-red-700 shadow-lg transition">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            `;
+            preview.appendChild(div);
+        };
+        
+        reader.readAsDataURL(file);
+    }
+}
+
+function removeMainImage() {
+    const input = document.getElementById('main_image');
+    input.value = '';
+    document.getElementById('mainImagePreview').innerHTML = '';
+}
 
 function previewImages(event) {
     const preview = document.getElementById('imagePreview');

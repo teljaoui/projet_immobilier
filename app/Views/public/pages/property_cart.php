@@ -47,6 +47,13 @@
             <div id="map" style="width: 100%; height: 500px; position: relative; z-index: 0;"></div>
         </div>
 
+        <div class="flex justify-center mt-12">
+            <a href="<?= base_url('biens') ?>"
+                class="bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-orange-600 transition duration-300">
+                Voir plus de biens
+            </a>
+        </div>
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <style>

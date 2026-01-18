@@ -18,7 +18,9 @@ class PropertyController extends BaseController
         $properties = $propertyModel->orderBy('created_at', 'DESC')->findAll(6);
 
         foreach ($properties as &$property) {
-            $image = $imageModel->where('property_id', $property['id'])->first();
+            $image = $imageModel->where('property_id', $property['id'])
+                ->orderBy('created_at', 'DESC')
+                ->first();
             $property['image'] = $image['image'] ?? null;
 
             $type = $typeModel->find($property['type_id']);
@@ -52,11 +54,18 @@ class PropertyController extends BaseController
             'surface' => 'required|integer',
             'city' => 'required|max_length[255]',
             'address' => 'required|max_length[255]',
-            'images' => [
-                'rules' => 'uploaded[images]|max_size[images,5120]|is_image[images]',
+            'main_image' => [
+                'rules' => 'uploaded[main_image]|max_size[main_image,5120]|is_image[main_image]',
                 'errors' => [
-                    'uploaded' => 'Veuillez ajouter au moins une image',
+                    'uploaded' => 'Veuillez ajouter l’image principale',
                     'is_image' => 'Le fichier doit être une image',
+                    'max_size' => 'Image trop grande (max 5MB)'
+                ]
+            ],
+            'images' => [
+                'rules' => 'max_size[images,5120]|is_image[images]',
+                'errors' => [
+                    'is_image' => 'Tous les fichiers doivent être des images',
                     'max_size' => 'Image trop grande (max 5MB)'
                 ]
             ]
@@ -67,6 +76,7 @@ class PropertyController extends BaseController
                 ->withInput()
                 ->with('error', implode('<br>', $this->validator->getErrors()));
         }
+
         $propertyModel = new PropertyModel();
 
         $propertyData = [
@@ -94,9 +104,20 @@ class PropertyController extends BaseController
         }
 
         $imageModel = new PropertyImageModel();
-        $images = $this->request->getFiles()['images'];
 
-        foreach ($images as $image) {
+        $mainImage = $this->request->getFile('main_image');
+        if ($mainImage && $mainImage->isValid() && !$mainImage->hasMoved()) {
+            $mainName = $mainImage->getRandomName();
+            $mainImage->move('assets/img/uploads/', $mainName);
+
+            $imageModel->insert([
+                'property_id' => $propertyId,
+                'image' => 'assets/img/uploads/' . $mainName
+            ]);
+        }
+
+        $otherImages = $this->request->getFiles()['images'] ?? [];
+        foreach ($otherImages as $image) {
             if ($image->isValid() && !$image->hasMoved()) {
                 $newName = $image->getRandomName();
                 $image->move('assets/img/uploads/', $newName);
@@ -111,9 +132,11 @@ class PropertyController extends BaseController
         return redirect()->to('admin/biens')
             ->with('success', 'Bien ajouté avec succès');
     }
+
     public function edit($id)
     {
         $propertyModel = new PropertyModel();
+        $imageModel = new PropertyImageModel();
         $property = $propertyModel->find($id);
 
         if (!$property) {
@@ -123,6 +146,10 @@ class PropertyController extends BaseController
 
         $propertyTypeModel = new PropertyTypeModel();
         $properties_type = $propertyTypeModel->findAll();
+
+        $images = $imageModel->where('property_id', $property['id'])->findAll();
+        $property['images'] = $images;
+
 
         return view('admin/pages/property_up', [
             'title' => 'Modifier le bien',
@@ -152,10 +179,17 @@ class PropertyController extends BaseController
             'surface' => 'required|integer',
             'city' => 'required|max_length[255]',
             'address' => 'required|max_length[255]',
+            'main_image' => [
+                'rules' => 'max_size[main_image,5120]|is_image[main_image]',
+                'errors' => [
+                    'is_image' => 'Le fichier doit être une image',
+                    'max_size' => 'Image trop grande (max 5MB)'
+                ]
+            ],
             'images.*' => [
                 'rules' => 'max_size[images,5120]|is_image[images]',
                 'errors' => [
-                    'is_image' => 'Le fichier doit être une image',
+                    'is_image' => 'Tous les fichiers doivent être des images',
                     'max_size' => 'Image trop grande (max 5MB)'
                 ]
             ]
@@ -185,10 +219,21 @@ class PropertyController extends BaseController
 
         $propertyModel->update($id, $propertyData);
 
-        $images = $this->request->getFiles()['images'] ?? [];
         $imageModel = new PropertyImageModel();
 
-        foreach ($images as $image) {
+        $mainImage = $this->request->getFile('main_image');
+        if ($mainImage && $mainImage->isValid() && !$mainImage->hasMoved()) {
+            $mainName = $mainImage->getRandomName();
+            $mainImage->move('assets/img/uploads/', $mainName);
+
+            $imageModel->insert([
+                'property_id' => $id,
+                'image' => 'assets/img/uploads/' . $mainName
+            ]);
+        }
+
+        $otherImages = $this->request->getFiles()['images'] ?? [];
+        foreach ($otherImages as $image) {
             if ($image && $image->isValid() && !$image->hasMoved()) {
                 $newName = $image->getRandomName();
                 $image->move('assets/img/uploads/', $newName);
@@ -228,5 +273,26 @@ class PropertyController extends BaseController
 
         return redirect()->to('admin/biens')->with('success', 'Bien supprimé avec succès.');
     }
+
+    public function delete_image($id)
+    {
+        $imageModel = new PropertyImageModel();
+
+        $image = $imageModel->find($id);
+
+        if (!$image) {
+            return redirect()->back()->with('error', 'Image introuvable');
+        }
+
+        $filePath = $image['image'];
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        $imageModel->delete($id);
+
+        return redirect()->back()->with('success', 'Image supprimée avec succès');
+    }
+
 
 }

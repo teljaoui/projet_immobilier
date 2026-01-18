@@ -35,7 +35,8 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('admin/biens/update/'.$property['id']) ?>" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <form action="<?= base_url('admin/biens/update/' . $property['id']) ?>" method="POST"
+                    enctype="multipart/form-data" class="space-y-6">
                     <?= csrf_field() ?>
 
                     <!-- Informations de base -->
@@ -50,7 +51,7 @@
                                 <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
                                     Titre du bien <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="title" name="title" required 
+                                <input type="text" id="title" name="title" required
                                     value="<?= old('title', $property['title']) ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="Ex: Villa moderne avec piscine">
@@ -90,7 +91,8 @@
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition">
                                     <option value="">Sélectionnez</option>
                                     <option value="vente" <?= old('transaction_type', $property['transaction_type']) == 'vente' ? 'selected' : '' ?>>Vente</option>
-                                    <option value="location" <?= old('transaction_type', $property['transaction_type']) == 'location' ? 'selected' : '' ?>>Location</option>
+                                    <option value="location" <?= old('transaction_type', $property['transaction_type']) == 'location' ? 'selected' : '' ?>>Location
+                                    </option>
                                 </select>
                             </div>
 
@@ -98,7 +100,7 @@
                                 <label for="price" class="block text-sm font-medium text-gray-700 mb-2">
                                     Prix (DH) <span class="text-red-500">*</span>
                                 </label>
-                                <input type="number" id="price" name="price" required 
+                                <input type="number" id="price" name="price" required
                                     value="<?= old('price', $property['price']) ?>" min="0" step="0.01"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="1500000">
@@ -118,7 +120,7 @@
                                 <label for="surface" class="block text-sm font-medium text-gray-700 mb-2">
                                     Surface (m²) <span class="text-red-500">*</span>
                                 </label>
-                                <input type="number" id="surface" name="surface" required 
+                                <input type="number" id="surface" name="surface" required
                                     value="<?= old('surface', $property['surface']) ?>" min="0" step="0.01"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="120">
@@ -128,7 +130,7 @@
                                 <label for="rooms" class="block text-sm font-medium text-gray-700 mb-2">
                                     Nombre de pièces
                                 </label>
-                                <input type="number" id="rooms" name="rooms" 
+                                <input type="number" id="rooms" name="rooms"
                                     value="<?= old('rooms', $property['rooms']) ?>" min="0"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="5">
@@ -138,7 +140,7 @@
                                 <label for="bedrooms" class="block text-sm font-medium text-gray-700 mb-2">
                                     Chambres
                                 </label>
-                                <input type="number" id="bedrooms" name="bedrooms" 
+                                <input type="number" id="bedrooms" name="bedrooms"
                                     value="<?= old('bedrooms', $property['bedrooms']) ?>" min="0"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="3">
@@ -148,7 +150,7 @@
                                 <label for="bathrooms" class="block text-sm font-medium text-gray-700 mb-2">
                                     Salles de bain
                                 </label>
-                                <input type="number" id="bathrooms" name="bathrooms" 
+                                <input type="number" id="bathrooms" name="bathrooms"
                                     value="<?= old('bathrooms', $property['bathrooms']) ?>" min="0"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="2">
@@ -168,7 +170,7 @@
                                 <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
                                     Ville <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="city" name="city" required 
+                                <input type="text" id="city" name="city" required
                                     value="<?= old('city', $property['city']) ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="Casablanca">
@@ -178,7 +180,7 @@
                                 <label for="address" class="block text-sm font-medium text-gray-700 mb-2">
                                     Adresse <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="address" name="address" required 
+                                <input type="text" id="address" name="address" required
                                     value="<?= old('address', $property['address']) ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="123 Rue Example">
@@ -188,7 +190,7 @@
                                 <label for="latitude" class="block text-sm font-medium text-gray-700 mb-2">
                                     Latitude
                                 </label>
-                                <input type="text" id="latitude" name="latitude" 
+                                <input type="text" id="latitude" name="latitude"
                                     value="<?= old('latitude', $property['latitude']) ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="33.5731">
@@ -198,7 +200,7 @@
                                 <label for="longitude" class="block text-sm font-medium text-gray-700 mb-2">
                                     Longitude
                                 </label>
-                                <input type="text" id="longitude" name="longitude" 
+                                <input type="text" id="longitude" name="longitude"
                                     value="<?= old('longitude', $property['longitude']) ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="-7.5898">
@@ -206,7 +208,6 @@
                         </div>
                     </div>
 
-                    <!-- Images -->
                     <div class="pb-6">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">
                             <i class="fa-solid fa-images text-[#ff551a] mr-2"></i>
@@ -214,11 +215,14 @@
                         </h3>
 
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                            <?php if(isset($property['images'])): ?>
-                                <?php foreach($property['images'] as $img): ?>
+                            <?php if (isset($property['images'])): ?>
+                                <?php foreach ($property['images'] as $img): ?>
                                     <div class="relative">
-                                        <img src="<?= base_url('img/uploads/properties/'.$img['image']) ?>" alt="Image du bien" class="w-full h-32 object-cover rounded-lg">
-                                        <a href="<?= base_url('admin/biens/delete_image/'.$img['id']) ?>" class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100">
+                                        <img src="<?= base_url($img['image']) ?>" alt="Image du bien"
+                                            class="w-full h-32 object-cover rounded-lg">
+                                        <a href="<?= base_url('admin/biens/delete_image/' . $img['id']) ?>"
+                                            class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100"
+                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">
                                             <i class="fa-solid fa-x"></i>
                                         </a>
                                     </div>
@@ -226,24 +230,28 @@
                             <?php endif; ?>
                         </div>
 
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#ff551a] transition">
-                            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden" onchange="previewImages(event)">
+
+                        <div
+                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#ff551a] transition">
+                            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden"
+                                onchange="previewImages(event)">
                             <label for="images" class="cursor-pointer">
                                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                 <p class="text-gray-600 mb-2">Cliquez pour ajouter de nouvelles images</p>
                                 <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB par image)</p>
                             </label>
                         </div>
-                        
+
                         <div id="imagePreview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"></div>
                     </div>
 
-                    <!-- Actions -->
                     <div class="flex justify-end gap-4 pt-6">
-                        <a href="<?= base_url('admin/biens') ?>" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+                        <a href="<?= base_url('admin/biens') ?>"
+                            class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
                             <i class="fa-solid fa-times mr-2"></i>Annuler
                         </a>
-                        <button type="submit" class="bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center gap-2">
+                        <button type="submit"
+                            class="bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center gap-2">
                             <i class="fa-solid fa-check"></i>Mettre à jour le bien
                         </button>
                     </div>

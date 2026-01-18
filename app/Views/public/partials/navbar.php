@@ -81,7 +81,7 @@
         </ul>
         <div class="flex items-center gap-4">
             <?php if (session()->get('isLoggedIn')): ?>
-                <a href="<?= site_url(session()->get('role') === 'admin' ? '/admin/dashboard' : '/client') ?>"
+                <a href="<?= site_url(session()->get('role') === 'admin' ? '/admin' : '/client') ?>"
                     class="bg-primary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition flex items-center gap-2">
                     <i class="fa-solid fa-user"></i>
                     Profile
