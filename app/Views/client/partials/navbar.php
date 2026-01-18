@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 w-full bg-white shadow z-500">
+<header class="fixed top-0 left-0 w-full bg-white shadow z-50">
     <div class="bg-primary">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between text-sm text-white">
 
