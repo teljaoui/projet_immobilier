@@ -24,5 +24,13 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
 
 
 $routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Client'], function ($routes) {
-    $routes->get('', 'ClientController::index');
+    $routes->get('/', 'ClientController::index');
+});
+
+$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('/', 'AdminController::index');
+    $routes->get('biens', 'PropertyController::index');
+    $routes->get('messages', 'MessageController::index');
+    $routes->get('utilisateurs', 'UserController::index');
+
 });

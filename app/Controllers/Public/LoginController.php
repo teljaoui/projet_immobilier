@@ -104,7 +104,7 @@ class LoginController extends BaseController
         ]);
 
         if ($user['role'] === 'admin') {
-            return redirect()->to('/admin/dashboard');
+            return redirect()->to('/admin');
         }
 
         session()->setFlashdata('success', 'Connexion réussie !');

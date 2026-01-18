@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <title><?= esc($title ?? 'Espace Client') ?></title>
+    <title><?= esc($title ?? 'Espace Adinistrateur') ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -32,13 +32,12 @@
 
 <body class="font-rubik bg-gray-50 text-gray-800">
 
-    <?= view('client/partials/navbar') ?>
+    <?= view('admin/partials/navbar') ?>
 
     <main class="min-h-screen">
         <?= $this->renderSection('content') ?>
     </main>
 
-    <?= view('client/partials/footer') ?>
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
 </body>
 
