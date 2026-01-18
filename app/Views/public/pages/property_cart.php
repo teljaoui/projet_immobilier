@@ -25,8 +25,8 @@
         $locations = [];
         foreach ($properties as $prop) {
             if (!empty($prop['latitude']) && !empty($prop['longitude'])) {
-                $firstImage = !empty($prop['image'])
-                    ? base_url('assets/img/uploads/' . $prop['image'])
+                $Image = !empty($prop['image'])
+                    ? base_url($prop['image'])
                     : base_url('assets/img/placeholder.jpg');
 
                 $locations[] = [
@@ -38,7 +38,7 @@
                     'transaction_type' => $prop['transaction_type'],
                     'price' => $prop['price'],
                     'city' => $prop['city'] ?? '-',
-                    'image' => $firstImage,
+                    'image' => $Image,
                 ];
             }
         }

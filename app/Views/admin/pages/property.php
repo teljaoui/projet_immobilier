@@ -20,6 +20,23 @@
                 Ajouter un bien
             </a>
         </div>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-exclamation-circle text-red-500 mr-3"></i>
+                    <p class="text-red-700 text-sm"><?= session()->getFlashdata('error') ?></p>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                    <p class="text-green-700 text-sm"><?= session()->getFlashdata('success') ?></p>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <table class="min-w-full divide-y divide-gray-200">
@@ -47,7 +64,7 @@
                             <tr class="hover:bg-gray-50 transition">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <?php if ($property['image']): ?>
-                                        <img src="<?= base_url('uploads/properties/' . $property['image']) ?>"
+                                        <img src="<?= base_url( $property['image']) ?>"
                                             alt="<?= esc($property['title']) ?>" class="h-16 w-16 object-cover rounded">
                                     <?php else: ?>
                                         <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center">
@@ -86,11 +103,11 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <div class="flex space-x-2">
-                                        <a href="/admin/property/edit/<?= $property['id'] ?>"
+                                        <a href="/admin/biens/edit/<?= $property['id'] ?>"
                                             class="text-blue-600 hover:text-blue-900">
                                             <i class="fa-solid fa-edit"></i>
                                         </a>
-                                        <a href="/admin/property/delete/<?= $property['id'] ?>"
+                                        <a href="/admin/biens/delete/<?= $property['id'] ?>"
                                             class="text-red-600 hover:text-red-900"
                                             onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce bien ?')">
                                             <i class="fa-solid fa-trash"></i>

@@ -179,8 +179,8 @@
             <?php if (!empty($properties)): ?>
                 <?php foreach ($properties as $property): ?>
                     <?php
-                    $firstImage = !empty($property['image'])
-                        ? base_url('assets/img/uploads/' . $property['image'])
+                    $Image = !empty($property['image']) 
+                        ? base_url($property['image'])
                         : base_url('assets/img/placeholder.jpg');
                     ?>
                     <div class="max-w-sm mx-auto mx-h-100 mt-8">
@@ -191,7 +191,7 @@
                                 class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
                                 <div
                                     class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
-                                    <img src="<?= esc($firstImage) ?>" alt="<?= esc($property['title']) ?>"
+                                    <img src="<?= esc(  $Image) ?>" alt="<?= esc($property['title']) ?>"
                                         class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
 
                                     <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">

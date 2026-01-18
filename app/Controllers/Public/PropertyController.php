@@ -64,8 +64,11 @@ class PropertyController extends BaseController
             throw PageNotFoundException::forPageNotFound("Bien immobilier introuvable");
         }
 
-        $image = $imageModel->where('property_id', $property['id'])->first();
-        $property['image'] = $image['image'] ?? null;
+        $images = $imageModel->where('property_id', $property['id'])->findAll();
+        $property['images'] = array_map(function ($img) {
+            return  $img['image'];
+        }, $images);
+
         $type = $typeModel->find($property['type_id']);
         $property['type_name'] = $type['name'] ?? 'Non défini';
 

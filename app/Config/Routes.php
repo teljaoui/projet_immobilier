@@ -37,7 +37,7 @@ $routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admi
         $routes->post('store', 'PropertyController::store'); 
         $routes->get('edit/(:num)', 'PropertyController::edit/$1');
         $routes->post('update/(:num)', 'PropertyController::update/$1');
-        $routes->post('delete/(:num)', 'PropertyController::delete/$1');
+        $routes->get('delete/(:num)', 'PropertyController::delete/$1');
     });
 
     $routes->group('messages', function ($routes) {

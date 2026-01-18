@@ -20,12 +20,12 @@
         <div id="alert-container" class="flex py-2 w-full space-y-3"></div>
         <div class="flex flex-col md:flex-row items-start gap-8">
             <div class="md:w-1/2 w-full">
-                <div class="swiper propertySwiper rounded-lg overflow-hidden shadow-lg">
+                <div class="swiper mySwiper propertySwiper rounded-lg overflow-hidden shadow-lg">
                     <div class="swiper-wrapper">
                         <?php if (!empty($property['images']) && is_array($property['images']) && count($property['images']) > 0): ?>
                             <?php foreach ($property['images'] as $image): ?>
                                 <div class="swiper-slide">
-                                    <img src="<?= esc($image) ?>" alt="<?= esc($property['title']) ?>"
+                                    <img src="<?= base_url($image) ?>" alt="<?= esc($property['title']) ?>"
                                         class="w-full h-[400px] object-cover">
                                 </div>
                             <?php endforeach; ?>
@@ -42,8 +42,6 @@
                     </div>
                     <?php if (!empty($property['images']) && is_array($property['images']) && count($property['images']) > 1): ?>
                         <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
                     <?php endif; ?>
                 </div>
             </div>
