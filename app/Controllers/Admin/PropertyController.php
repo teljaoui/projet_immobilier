@@ -9,6 +9,7 @@ class PropertyController extends BaseController
 {
     public function index()
     {
-        //
+        return view('admin/pages/property');
+        
     }
 }
