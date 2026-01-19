@@ -43,8 +43,8 @@
                         <div>
                             <h4 class="font-semibold text-gray-800 mb-1">Adresse</h4>
                             <p class="text-gray-600 text-sm">
-                                Casablanca, Maroc<br>
-                                Code Postal: 20000
+                                N°9, Magasin, Rabat <br>
+                                Code Postal: 1000
                             </p>
                         </div>
                     </li>
@@ -71,7 +71,7 @@
                         <div>
                             <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
                             <p class="text-gray-600 text-sm">
-                                contact@agence.com<br>
+                                contact@immobilier.ma<br>
                                 Réponse sous 24h
                             </p>
                         </div>
@@ -120,59 +120,74 @@
                 <h3 class="text-2xl font-bold mb-6 text-gray-800">
                     Envoyez-nous un <span class="text-[#ff551a]">Message</span>
                 </h3>
+                <?php if (session()->getFlashdata('error')): ?>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-exclamation-circle text-red-500 mr-3"></i>
+                            <p class="text-red-700 text-sm"><?= session()->getFlashdata('error') ?></p>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
-                <form action="" method="POST" class="space-y-5">
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                            <p class="text-green-700 text-sm"><?= session()->getFlashdata('success') ?></p>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+
+                <form action="<?= base_url('contact/store') ?>" method="POST" class="space-y-6">
+                    <?= csrf_field() ?>
+
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                            Nom complet <span class="text-[#ff551a]">*</span>
+                            Nom <span class="text-red-500">*</span>
                         </label>
-                        <input type="text" id="name" name="name" required
+                        <input type="text" id="name" name="name" required value="<?= old('name') ?>"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="Votre nom">
+                            placeholder="Ex: Mohamed alaoui">
                     </div>
 
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                            Email <span class="text-[#ff551a]">*</span>
+                            Email <span class="text-red-500">*</span>
                         </label>
-                        <input type="email" id="email" name="email" required
+                        <input type="email" id="email" name="email" required value="<?= old('email') ?>"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="votre.email@exemple.com">
+                            placeholder="exemple@mail.com">
                     </div>
 
                     <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-                            Téléphone
+                        <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">
+                            Téléphone <span class="text-red-500">*</span>
                         </label>
-                        <input type="tel" id="phone" name="phone"
+                        <input type="text" id="phone_number" name="phone_number" required
+                            value="<?= old('phone_number') ?>"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="+212 6 00 00 00 00">
-                    </div>
-
-                    <div>
-                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">
-                            Sujet <span class="text-[#ff551a]">*</span>
-                        </label>
-                        <input type="text" id="subject" name="subject" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="Objet de votre message">
+                            placeholder="Ex: 0600000000">
                     </div>
 
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                            Message <span class="text-[#ff551a]">*</span>
+                            Message <span class="text-red-500">*</span>
                         </label>
-                        <textarea id="message" name="message" rows="5" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition resize-none"
-                            placeholder="Décrivez votre demande..."></textarea>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
+                            placeholder="Votre message..."><?= old('message') ?></textarea>
                     </div>
 
-                    <button type="submit"
-                        class="w-full bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-colors duration-300 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        Envoyer le message
-                    </button>
+                    <div class="flex justify-end gap-4 pt-6">
+                        <button type="submit"
+                            class="bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Envoyer
+                        </button>
+                    </div>
                 </form>
+
             </div>
 
         </div>
