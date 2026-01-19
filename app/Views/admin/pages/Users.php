@@ -52,6 +52,9 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider 
                         ">Role
                         </th>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider 
+                        ">Téléphone
+                        </th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                             Action
                         </th>
@@ -76,6 +79,9 @@
                                      <?= $user['role'] === 'client' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' ?>"">
                                     <?= esc($user['role']) ?>
                                     </span>
+                                </td>
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <?= esc($user['phone_number']) ?>
                                 </td>
                                    <td class=" px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         <div class="flex space-x-2">

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
             'email' => ['type' => 'VARCHAR', 'constraint' => 100, 'unique' => true],
             'password' => ['type' => 'VARCHAR', 'constraint' => 255],
             'role' => ['type' => 'ENUM', 'constraint' => ['client', 'admin'], 'default' => 'client'],
+            'phone_number' => ['type' => 'VARCHAR', 'constraint' => 20],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

@@ -34,7 +34,8 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('admin/utilisateurs/update/' . $user['id']) ?>" method="POST" class="space-y-6">
+                <form action="<?= base_url('admin/utilisateurs/update/' . $user['id']) ?>" method="POST"
+                    class="space-y-6">
                     <?= csrf_field() ?>
 
                     <div class="border-b pb-6">
@@ -79,6 +80,16 @@
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="********">
                             </div>
+                            <div>
+                                <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Téléphone <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="phone_number" name="phone_number" required
+                                    value="<?= old('phone_number' , $user['phone_number']) ?>"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
+                                    placeholder="Ex: 0600000000">
+                            </div>
+
                         </div>
                     </div>
 

@@ -35,6 +35,7 @@ class UserController extends BaseController
             'lastName' => 'required|min_length[2]|max_length[50]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[6]',
+            'phone_number' => 'required|numeric|min_length[8]|max_length[15]'
         ];
 
         if (!$this->validate($rules)) {
@@ -50,6 +51,7 @@ class UserController extends BaseController
             'lastName' => $this->request->getPost('lastName'),
             'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'phone_number' => $this->request->getPost('phone_number'), 
             'role' => 'admin'
         ];
 
@@ -58,6 +60,7 @@ class UserController extends BaseController
         return redirect()->to('admin/utilisateurs')
             ->with('success', 'Utilisateur ajouté avec succès');
     }
+
 
     public function edit($id)
     {
@@ -90,7 +93,8 @@ class UserController extends BaseController
         $rules = [
             'firstName' => 'required|min_length[2]|max_length[50]',
             'lastName' => 'required|min_length[2]|max_length[50]',
-            'email' => 'required|valid_email|is_unique[users.email,id,{id}]',
+            'email' => "required|valid_email|is_unique[users.email,id,{$id}]",
+            'phone_number' => 'required|numeric|min_length[8]|max_length[15]'
         ];
 
         if (!$this->validate($rules)) {
@@ -103,6 +107,7 @@ class UserController extends BaseController
             'firstName' => $this->request->getPost('firstName'),
             'lastName' => $this->request->getPost('lastName'),
             'email' => $this->request->getPost('email'),
+            'phone_number' => $this->request->getPost('phone_number'), 
             'role' => 'admin'
         ];
 

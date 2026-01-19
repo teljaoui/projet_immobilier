@@ -128,7 +128,7 @@
                     <button
                         class="flex-1 bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary/90 transition">
                         <i class="fa-solid fa-phone mr-2"></i>
-                        Contacter
+                        Demander une visite
                     </button>
                     <button onclick="toggleFavorite(<?= htmlspecialchars(json_encode([
                         'id' => $property['id'] ?? uniqid(),

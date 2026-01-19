@@ -59,8 +59,7 @@
                                 <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
                                     Nom <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="lastName" name="lastName" required
-                                    value="<?= old('lastName') ?>"
+                                <input type="text" id="lastName" name="lastName" required value="<?= old('lastName') ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="Ex: Teljaoui">
                             </div>
@@ -69,8 +68,7 @@
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                                     Email <span class="text-red-500">*</span>
                                 </label>
-                                <input type="email" id="email" name="email" required
-                                    value="<?= old('email') ?>"
+                                <input type="email" id="email" name="email" required value="<?= old('email') ?>"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="exemple@mail.com">
                             </div>
@@ -83,6 +81,16 @@
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
                                     placeholder="********">
                             </div>
+                            <div>
+                                <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Téléphone <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="phone_number" name="phone_number" required
+                                    value="<?= old('phone_number') ?>"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
+                                    placeholder="Ex: 0600000000">
+                            </div>
+
                         </div>
                     </div>
 

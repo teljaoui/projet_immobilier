@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@immobilier.com',
             'password' => password_hash('admin123', PASSWORD_DEFAULT),
             'role' => 'admin',
+            'phone_number' => '0652583234',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'password' => password_hash('client123', PASSWORD_DEFAULT),
                 'role' => 'client',
+                'phone_number' => '0600000000',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
