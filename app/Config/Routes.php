@@ -53,7 +53,7 @@ $routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admi
         $routes->post('store', 'UserController::store');
         $routes->get('edit/(:num)', 'UserController::edit/$1');
         $routes->post('update/(:num)', 'UserController::update/$1');
-        $routes->post('delete/(:num)', 'UserController::delete/$1');
+        $routes->get('delete/(:num)', 'UserController::delete/$1');
     });
 
 });

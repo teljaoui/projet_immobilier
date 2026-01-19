@@ -205,7 +205,7 @@
                             <div class="border-2 border-dashed border-[#ff551a] rounded-lg p-6 text-center hover:border-[#e64910] transition bg-orange-50">
                                 <input type="file" id="main_image" name="main_image" accept="image/*" 
                                     class="hidden" onchange="previewMainImage(event)">
-                                <label for="main_image" class="cursor-pointer">
+                                <label for="main_image" class="cursor-pointer">x
                                     <i class="fa-solid fa-star text-4xl text-[#ff551a] mb-3"></i>
                                     <p class="text-gray-700 mb-2 font-semibold">Cliquez pour sélectionner des images</p>
                                     <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB)</p>
