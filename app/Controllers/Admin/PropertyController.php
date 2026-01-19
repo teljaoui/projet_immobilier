@@ -18,9 +18,11 @@ class PropertyController extends BaseController
         $properties = $propertyModel->orderBy('created_at', 'DESC')->findAll(6);
 
         foreach ($properties as &$property) {
-            $image = $imageModel->where('property_id', $property['id'])
-                ->orderBy('created_at', 'DESC')
+            $image = $imageModel
+                ->where('property_id', $property['id'])
+                ->where('is_main', 1)
                 ->first();
+
             $property['image'] = $image['image'] ?? null;
 
             $type = $typeModel->find($property['type_id']);

@@ -221,39 +221,59 @@
                                         <img src="<?= base_url($img['image']) ?>" alt="Image du bien"
                                             class="w-full h-32 object-cover rounded-lg">
                                         <a href="<?= base_url('admin/biens/delete_image/' . $img['id']) ?>"
-                                             class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">
+                                            class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1 shadow hover:bg-red-100"
+                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">
                                             <i class="fa-solid fa-x"></i>
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-                                    
 
-                        <div
-                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#ff551a] transition">
-                            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden"
-                                onchange="previewImages(event)">
-                            <label for="images" class="cursor-pointer">
-                                <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
-                                <p class="text-gray-600 mb-2">Cliquez pour ajouter de nouvelles images</p>
-                                <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB par image)</p>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Image principale <span class="text-red-500">*</span>
                             </label>
+                            <div
+                                class="border-2 border-dashed border-[#ff551a] rounded-lg p-6 text-center hover:border-[#e64910] transition bg-orange-50">
+                                <input type="file" id="main_image" name="main_image" accept="image/*" 
+                                    class="hidden" onchange="previewMainImage(event)">
+                                <label for="main_image" class="cursor-pointer">
+                                    <i class="fa-solid fa-star text-4xl text-[#ff551a] mb-3"></i>
+                                    <p class="text-gray-700 mb-2 font-semibold">Cliquez pour sélectionner des images</p>
+                                    <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB)</p>
+                                </label>
+                            </div>
+                            <div id="mainImagePreview" class="mt-4"></div>
                         </div>
 
-                        <div id="imagePreview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"></div>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Images supplémentaires (optionnel)
+                            </label>
+                            <div
+                                class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#ff551a] transition">
+                                <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden"
+                                    onchange="previewImages(event)">
+                                <label for="images" class="cursor-pointer">
+                                    <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
+                                    <p class="text-gray-600 mb-2">Cliquez pour sélectionner une image</p>
+                                    <p class="text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB par image)</p>
+                                </label>
+                            </div>
+                            <div id="imagePreview" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"></div>
+                        </div>
 
-                    <div class="flex justify-end gap-4 pt-6">
-                        <a href="<?= base_url('admin/biens') ?>"
-                            class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-                            <i class="fa-solid fa-times mr-2"></i>Annuler
-                        </a>
-                        <button type="submit"
-                            class="bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center gap-2">
-                            <i class="fa-solid fa-check"></i>Mettre à jour le bien
-                        </button>
-                    </div>
+                        <div class="flex justify-end gap-4 pt-6">
+                            <a href="<?= base_url('admin/biens') ?>"
+                                class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+                                <i class="fa-solid fa-times mr-2"></i>Annuler
+                            </a>
+                            <button type="submit"
+                                class="bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center gap-2">
+                                <i class="fa-solid fa-check"></i>Mettre à jour le bien
+                            </button>
+                        </div>
                 </form>
 
             </div>

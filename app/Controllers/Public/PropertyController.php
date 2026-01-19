@@ -19,9 +19,10 @@ class PropertyController extends BaseController
 
         $properties = $propertyModel->findAll();
         foreach ($properties as &$property) {
-            $image = $imageModel->where('property_id', $property['id'])    
-            ->orderBy('created_at', 'DESC')
-            ->first();
+            $image = $imageModel
+                ->where('property_id', $property['id'])
+                ->where('is_main', 1)
+                ->first();
             $property['image'] = $image['image'] ?? null;
 
             $type = $typeModel->find($property['type_id']);
@@ -41,9 +42,9 @@ class PropertyController extends BaseController
 
         $properties = $propertyModel->findAll();
         foreach ($properties as &$property) {
-            $image = $imageModel->where('property_id', $property['id'])    
-            ->orderBy('created_at', 'DESC')
-            ->first();
+            $image = $imageModel->where('property_id', $property['id'])
+                ->orderBy('created_at', 'DESC')
+                ->first();
             $property['image'] = $image['image'] ?? null;
 
             $type = $typeModel->find($property['type_id']);
@@ -70,7 +71,7 @@ class PropertyController extends BaseController
 
         $images = $imageModel->where('property_id', $property['id'])->findAll();
         $property['images'] = array_map(function ($img) {
-            return  $img['image'];
+            return $img['image'];
         }, $images);
 
         $type = $typeModel->find($property['type_id']);

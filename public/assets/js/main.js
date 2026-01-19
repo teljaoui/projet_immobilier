@@ -363,6 +363,7 @@ function previewImages(event) {
             
             reader.readAsDataURL(file);
         });
+        console.log(file)
     }
 }
 
