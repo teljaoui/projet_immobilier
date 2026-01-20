@@ -9,7 +9,7 @@
                 Connectez-vous à votre <span class="text-[#ff551a]">Espace Client</span>
             </h2>
             <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-6">
-                Accédez à votre espace personnel pour gérer vos biens, suivre vos demandes 
+                Accédez à votre espace personnel pour gérer vos biens, suivre vos demandes
                 et profiter de nos services exclusifs.
             </p>
             <div class="flex justify-center mb-6">
@@ -19,7 +19,7 @@
 
         <div class="max-w-xl mx-auto">
             <div class="bg-white rounded-lg shadow-sm p-8">
-                                <div class="text-center mb-8">
+                <div class="text-center mb-8">
                     <h3 class="text-2xl font-bold text-gray-800">Bienvenue</h3>
                     <p class="text-gray-600 text-sm mt-2">Connectez-vous pour continuer</p>
                 </div>
@@ -44,20 +44,16 @@
 
                 <form action="<?= base_url('login') ?>" method="POST" class="space-y-6">
                     <?= csrf_field() ?>
+
+                    <input type="hidden" name="redirect" value="<?= esc(service('request')->getGet('redirect')) ?>">
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                             <i class="fa-solid fa-envelope text-[#ff551a] mr-1"></i>
                             Adresse email
                         </label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            required
-                            value="<?= old('email') ?>"
+                        <input type="email" id="email" name="email" required value="<?= old('email') ?>"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
-                            placeholder="votre.email@exemple.com"
-                        >
+                            placeholder="votre.email@exemple.com">
                         <?php if (isset($validation) && $validation->hasError('email')): ?>
                             <p class="text-red-500 text-xs mt-1"><?= $validation->getError('email') ?></p>
                         <?php endif; ?>
@@ -68,19 +64,11 @@
                             Mot de passe
                         </label>
                         <div class="relative">
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                required
+                            <input type="password" id="password" name="password" required
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition pr-12"
-                                placeholder="••••••••"
-                            >
-                            <button 
-                                type="button"
-                                id="togglePassword"
-                                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition"
-                            >
+                                placeholder="••••••••">
+                            <button type="button" id="togglePassword"
+                                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition">
                                 <i class="fa-solid fa-eye" id="eyeIcon"></i>
                             </button>
                         </div>
@@ -88,10 +76,8 @@
                             <p class="text-red-500 text-xs mt-1"><?= $validation->getError('password') ?></p>
                         <?php endif; ?>
                     </div>
-                    <button 
-                        type="submit"
-                        class="w-full bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center justify-center gap-2"
-                    >
+                    <button type="submit"
+                        class="w-full bg-[#ff551a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e64910] transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-right-to-bracket"></i>
                         Se connecter
                     </button>

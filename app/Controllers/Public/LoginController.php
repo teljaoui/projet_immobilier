@@ -80,18 +80,7 @@ class LoginController extends BaseController
             ->where('email', $this->request->getPost('email'))
             ->first();
 
-        if (!$user) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Email ou mot de passe incorrect');
-        }
-
-        if (
-            !password_verify(
-                $this->request->getPost('password'),
-                $user['password']
-            )
-        ) {
+        if (!$user || !password_verify($this->request->getPost('password'), $user['password'])) {
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Email ou mot de passe incorrect');
@@ -105,11 +94,17 @@ class LoginController extends BaseController
             'isLoggedIn' => true,
         ]);
 
+        session()->setFlashdata('success', 'Connexion réussie !');
+
+        $redirect = $this->request->getPost('redirect');
+
+        if (!empty($redirect)) {
+            return redirect()->to($redirect);
+        }
+
         if ($user['role'] === 'admin') {
             return redirect()->to('/admin');
         }
-
-        session()->setFlashdata('success', 'Connexion réussie !');
 
         return redirect()->to('/client');
     }

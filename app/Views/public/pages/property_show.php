@@ -18,7 +18,7 @@
             </div>
         </div>
         <div id="alert-container" class="flex py-2 w-full space-y-3"></div>
-        <div class="flex flex-col md:flex-row items-start gap-8">
+        <div class="flex flex-col bg-white p-6 rounded-lg md:flex-row items-start gap-8">
             <div class="md:w-1/2 w-full">
                 <div class="swiper mySwiper propertySwiper rounded-lg overflow-hidden shadow-lg">
                     <div class="swiper-wrapper">
@@ -101,60 +101,79 @@
                         <?= esc($property['description'] ?? 'Aucune description disponible.') ?>
                     </p>
                 </div>
-                <?php if (!empty($property['year_built']) || !empty($property['property_id'])): ?>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <?php if (!empty($property['year_built'])): ?>
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-calendar text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Année de construction</p>
-                                    <p class="font-semibold"><?= esc($property['year_built']) ?></p>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($property['property_id'])): ?>
-                            <div class="flex items-center gap-2 text-gray-700">
-                                <i class="fa-solid fa-hashtag text-primary"></i>
-                                <div>
-                                    <p class="text-xs text-gray-500">Référence</p>
-                                    <p class="font-semibold"><?= esc($property['property_id']) ?></p>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                <?php $isLoggedIn = session()->get('isLoggedIn'); ?>
 
-                <div class="flex gap-3">
-                    <button
-                        class="flex-1 bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary/90 transition">
-                        <i class="fa-solid fa-phone mr-2"></i>
-                        Demander une visite
-                    </button>
-                    <button onclick="toggleFavorite(<?= htmlspecialchars(json_encode([
-                        'id' => $property['id'] ?? uniqid(),
-                        'title' => $property['title'] ?? '',
-                        'city' => $property['city'] ?? '',
-                        'price' => $property['price'] ?? 0,
-                        'image' => !empty($property['images']) && is_array($property['images']) ? $property['images'][0] : base_url('assets/img/placeholder.jpg')
-                    ]), ENT_QUOTES, 'UTF-8') ?>)" id="favorite-btn-<?= esc($property['id'] ?? uniqid()) ?>"
-                        class="favorite-btn bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition">
-                        <i class="fa-solid fa-heart"></i>
-                    </button>
+                <div class="flex flex-col gap-3">
+
+                    <?php if ($isLoggedIn): ?>
+
+                        <h3 class="text-gray-900 text-2xl  font-semibold text-center">
+                            Demander une visite
+                        </h3>
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-exclamation-circle text-red-500 mr-3"></i>
+                                    <p class="text-red-700 text-sm"><?= session()->getFlashdata('error') ?></p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                                    <p class="text-green-700 text-sm"><?= session()->getFlashdata('success') ?></p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <form action="<?= base_url('demande-visite') ?>" method="post" class="mt-3 space-y-3">
+                            <?= csrf_field() ?>
+
+                            <input type="hidden" name="property_id" value="<?= esc($property['id']) ?>">
+
+                            <textarea name="message" rows="4" required
+                                class="w-full border rounded-lg p-3 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition">
+Bonjour,
+Je suis intéressé(e) par le bien "<?= esc($property['title']) ?>" situé à <?= esc($property['city']) ?>.
+Je souhaite demander une visite.
+Merci de me contacter.
+Cordialement.
+    </textarea>
+
+
+                            <button type="submit"
+                                class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+                                Envoyer la demande
+                            </button>
+                        </form>
+
+                    <?php else: ?>
+                        <a href="<?= base_url('connexion?redirect=' . urlencode(current_url())) ?>"
+                            class="bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary/90 transition text-center">
+                            <i class="fa-solid fa-lock mr-2"></i>
+                            Connectez-vous pour demander une visite
+                        </a>
+
+
+                    <?php endif; ?>
+
                 </div>
             </div>
+
         </div>
         <?php
         $lat = $property['latitude'] ?? null;
         $lng = $property['longitude'] ?? null;
         ?>
 
-        <div class="title text-center mt-12">
-            <h2 class="text-xl font-bold mb-4">
+        <div class="title bg-white p-3 rounded-lg shadow-sm text-center mt-12">
+            <h2 class="text-xl text-gray-900 font-bold mb-4">
                 Localisation
             </h2>
 
             <?php if ($lat && $lng): ?>
-                <div class="bg-white p-3 rounded-lg shadow-sm overflow-hidden h-[300px]">
+                <div class="overflow-hidden  rounded-lg h-[300px]">
                     <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
                         src="https://maps.google.com/maps?q=<?= $lat ?>,<?= $lng ?>&hl=fr&z=15&output=embed">
                     </iframe>

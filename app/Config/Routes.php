@@ -21,6 +21,8 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
     $routes->post('inscription_post', 'LoginController::register_post');
     $routes->post('login', 'LoginController::login_post');
     $routes->post('logout', 'LoginController::logout', ['filter' => 'auth']);
+
+    $routes->post('demande-visite' , 'ClientController::store', ['filter' => 'auth']);
 });
 
 
