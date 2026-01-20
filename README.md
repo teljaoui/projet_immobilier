@@ -59,7 +59,7 @@ php spark migrate
 php spark db:seed MainSeeder
 ```
 
-> Le seeder crée un compte administrateur pour tester l’accès.
+> Le seeder `MainSeeder` crée un compte administrateur et insère des données de test (biens, types, villes, etc.) pour permettre de tester l’application immédiatement.
 
 ---
 
@@ -78,8 +78,4 @@ php spark db:seed MainSeeder
 
 1. Configurer le serveur web pour **pointer vers le dossier `public`**.
 2. Accéder au projet via navigateur :
-
-```
-http://localhost/<nom_du_projet>/public
-```
 
