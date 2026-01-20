@@ -1,126 +1,81 @@
-Parfait ! Je vais te réécrire ce README pour qu’il soit **professionnel, clair, orienté projet**, et spécifique à ton application d’agence immobilière sur CodeIgniter 4. Je vais intégrer toutes les infos importantes : installation, configuration, migrations, seeders, et accès admin. Voici une version prête à utiliser :
+Application Web Agence Immobilière - CodeIgniter 4
+À propos
 
----
+Cette application web permet de gérer et promouvoir des biens immobiliers.
 
-# Application Web Agence Immobilière - CodeIgniter 4
+Interface visiteur : consulter et rechercher des annonces, créer un compte client.
 
-## À propos de CodeIgniter
+Espace administrateur : gérer les biens, photos et contenus.
 
-CodeIgniter 4 est un framework PHP **léger, rapide, sécurisé et flexible** pour le développement d’applications web.
-Plus d’informations sur le site officiel : [https://codeigniter.com](https://codeigniter.com).
+Développée avec CodeIgniter 4 et MySQL.
 
-Ce projet est une application web pour **la gestion et la promotion des biens immobiliers**, construite avec CodeIgniter 4 et MySQL. Il fournit une interface **visiteur** pour consulter les annonces et un espace **administrateur** sécurisé pour gérer les biens et le contenu du site.
+Prérequis
 
----
+PHP ≥ 8.1
 
-## Fonctionnalités principales
+MySQL ou MariaDB
 
-* Gestion complète des annonces : ajout, modification, suppression.
-* Gestion des photos et caractéristiques détaillées des biens.
-* Interface de recherche avancée pour les visiteurs.
-* Formulaire de contact pour faciliter la communication avec l’agence.
-* Accès sécurisé pour l’administration.
-* Responsive design pour ordinateurs, tablettes et mobiles.
+Extensions PHP : intl, mbstring, json, mysqlnd, libcurl
 
----
+Serveur local : WampServer, XAMPP, MAMP, etc.
 
-## Prérequis serveur
+Installation rapide
 
-* PHP ≥ 8.1
-* MySQL ou MariaDB
-* Extensions PHP requises :
+Cloner le projet
 
-  * `intl`
-  * `mbstring`
-  * `json` (activée par défaut)
-  * `mysqlnd` (si utilisation de MySQL)
-  * `libcurl` (si utilisation de HTTP\CURLRequest)
-* Serveur local : WampServer, XAMPP ou équivalent
-
-> ⚠️ Versions PHP obsolètes :
->
-> * PHP 7.4 et 8.0 ne sont plus supportées.
-> * PHP 8.1 est supporté jusqu’au 31 décembre 2025.
-
----
-
-## Installation et configuration
-
-1. **Cloner le projet**
-
-```bash
 git clone <url_du_projet>
 cd <nom_du_dossier>
-```
 
-2. **Installer les dépendances Composer**
 
-```bash
+Installer les dépendances
+
 composer install
-```
 
-3. **Configurer l’environnement**
 
-* Copier le fichier `.env.example` en `.env`
-* Modifier les paramètres principaux :
+Configurer l’environnement
 
-```env
+Copier .env.example en .env et modifier :
+
 app.baseURL = 'http://localhost/<nom_du_projet>/public'
 database.default.hostname = localhost
 database.default.database = nom_de_votre_base
 database.default.username = root
 database.default.password = 
 database.default.DBDriver = MySQLi
-```
 
-4. **Créer la base de données**
 
-* Utiliser phpMyAdmin ou un autre outil pour créer la base avec le nom indiqué dans `.env`.
+Créer la base de données
 
-5. **Exécuter les migrations**
+Avec phpMyAdmin ou un autre outil, créer la base indiquée dans .env.
 
-```bash
+Lancer les migrations
+
 php spark migrate
-```
 
-6. **Exécuter le seeder pour les données de test**
 
-```bash
+Exécuter le seeder de test
+
 php spark db:seed MainSeeder
-```
 
-> Le seeder crée un compte administrateur pour tester la connexion.
 
----
+Le seeder crée un compte administrateur pour tester l’accès.
 
-## Accès à l’espace administrateur
+Accès comptes de test
 
-* **Email** : `admin@immobilier.com`
-* **Mot de passe** : `admin123`
+Administrateur :
 
----
+Email : admin@immobilier.com
 
-## Lancer le projet
+Mot de passe : admin123
 
-1. Configurer le serveur web pour **pointer vers le dossier `public`** de l’application.
-2. Accéder à l’application via navigateur :
+Client : possibilité de créer un compte directement depuis la plateforme.
 
-```
+Lancer l’application
+
+Configurer le serveur web pour pointer vers le dossier public.
+
+Accéder au projet via navigateur :
+
 http://localhost/<nom_du_projet>/public
-```
 
-> 🔹 `index.php` est maintenant dans le dossier `public` pour plus de sécurité. Ne pointez jamais votre serveur vers la racine du projet.
 
----
-
-## Bonnes pratiques
-
-* Utiliser des **virtual hosts** pour chaque projet.
-* Ne pas exposer le dossier racine du projet sur le serveur public.
-* Lire le guide utilisateur CodeIgniter 4 pour comprendre la structure et les bonnes pratiques : [Guide CI4](https://codeigniter.com/user_guide/).
-
----
-
-Si tu veux, je peux te faire une **version encore plus courte et élégante**, adaptée pour que ton professeur la lise en 1-2 minutes, avec juste les étapes pour lancer le projet et tester le login admin.
-
-Veux‑tu que je fasse ça ?
