@@ -1,7 +1,3 @@
-Parfait ! Voici une version **résumée, professionnelle et “prof-friendly”** de ton README, qui va droit au but : installation, base de données, migrations, seeders, lancement du projet, et test des comptes admin/visiteur.
-
----
-
 # Application Web Agence Immobilière - CodeIgniter 4
 
 ## À propos
