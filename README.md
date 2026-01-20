@@ -13,12 +13,6 @@ Prérequis
 
 PHP ≥ 8.1
 
-MySQL ou MariaDB
-
-Extensions PHP : intl, mbstring, json, mysqlnd, libcurl
-
-Serveur local : WampServer, XAMPP, MAMP, etc.
-
 Installation rapide
 
 Cloner le projet
