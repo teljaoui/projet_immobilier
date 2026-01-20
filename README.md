@@ -36,7 +36,6 @@ composer install
 * Copier `.env.example` en `.env` et modifier :
 
 ```env
-app.baseURL = 'http://localhost/<nom_du_projet>/public'
 database.default.hostname = localhost
 database.default.database = nom_de_votre_base
 database.default.username = root
