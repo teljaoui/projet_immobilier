@@ -4,21 +4,16 @@ namespace App\Controllers\Client;
 
 use App\Controllers\BaseController;
 use App\Models\OrderModel;
+use App\Models\PropertyModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class ClientController extends BaseController
 {
     public function index()
     {
-        if (session()->get('role') !== 'client') {
-            return redirect()->to('/login');
-        }
-
         $data = [
-            'user_id' => session()->get('user_id'),
             'user_name' => session()->get('user_name'),
             'user_email' => session()->get('user_email'),
-            'role' => session()->get('role'),
             'title' => 'Mon profil'
         ];
 
@@ -48,6 +43,39 @@ class ClientController extends BaseController
 
         return redirect()->back()
             ->with('success', 'Votre demande de visite a été envoyée avec succès');
+    }
+
+    public function orders()
+    {
+        $userId = session()->get('user_id'); 
+
+        $orderModel = new OrderModel();
+        $propertyModel = new PropertyModel();
+
+        $ordersRaw = $orderModel
+            ->where('user_id', $userId)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        $orders = [];
+        foreach ($ordersRaw as $order) {
+            $property = $propertyModel->find($order['property_id']);
+
+            $orders[] = [
+                'order_id' => $order['id'],
+                'property_id' => $order['property_id'],
+                'property_title' => $property['title'] ?? 'Bien supprimé',
+                'client_message' => $order['client_message'],
+                'agent_message' => $order['agent_message'] ?? '',
+                'status' => $order['status'],
+                'created_at' => $order['created_at'],
+            ];
+        }
+
+        return view('client/pages/orders', [
+            'orders' => $orders,
+            'title' => 'Mes demandes de visite'
+        ]);
     }
 
 }

@@ -22,22 +22,24 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
     $routes->post('login', 'LoginController::login_post');
     $routes->post('logout', 'LoginController::logout', ['filter' => 'auth']);
 
-    $routes->post('demande-visite' , 'ClientController::store', ['filter' => 'auth']);
 });
 
 
 $routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Client'], function ($routes) {
     $routes->get('/', 'ClientController::index');
+    $routes->post('demande-visite', 'ClientController::store');
+    $routes->get('commandes', 'ClientController::orders');
 });
 
-$routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admin'], function ($routes) {
+
+$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
 
     $routes->get('/', 'DashboardController::index');
 
     $routes->group('biens', function ($routes) {
-        $routes->get('/', 'PropertyController::index');     
-        $routes->get('create', 'PropertyController::create'); 
-        $routes->post('store', 'PropertyController::store'); 
+        $routes->get('/', 'PropertyController::index');
+        $routes->get('create', 'PropertyController::create');
+        $routes->post('store', 'PropertyController::store');
         $routes->get('edit/(:num)', 'PropertyController::edit/$1');
         $routes->post('update/(:num)', 'PropertyController::update/$1');
         $routes->get('delete/(:num)', 'PropertyController::delete/$1');
@@ -45,7 +47,7 @@ $routes->group('admin', ['filter' => 'auth','namespace' => 'App\Controllers\Admi
     });
 
     $routes->group('messages', function ($routes) {
-        $routes->get('/', 'MessageController::index');        
+        $routes->get('/', 'MessageController::index');
         $routes->get('show/(:num)', 'MessageController::show/$1');
         $routes->post('delete/(:num)', 'MessageController::delete/$1');
     });

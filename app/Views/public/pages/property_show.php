@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <form action="<?= base_url('demande-visite') ?>" method="post" class="mt-3 space-y-3">
+                        <form action="<?= base_url('client/demande-visite') ?>" method="post" class="mt-3 space-y-3">
                             <?= csrf_field() ?>
 
                             <input type="hidden" name="property_id" value="<?= esc($property['id']) ?>">
