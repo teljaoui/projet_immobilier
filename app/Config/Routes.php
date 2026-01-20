@@ -46,10 +46,12 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Adm
         $routes->get('delete_image/(:num)', 'PropertyController::delete_image/$1');
     });
 
-    $routes->group('messages', function ($routes) {
-        $routes->get('/', 'MessageController::index');
-        $routes->get('show/(:num)', 'MessageController::show/$1');
-        $routes->post('delete/(:num)', 'MessageController::delete/$1');
+    $routes->get('messages', 'MessageController::index');
+
+
+    $routes->group('demandes', function ($routes) {
+        $routes->get('detail/(:num)', 'DashboardController::show/$1');
+        $routes->post('update/(:num)', 'DashboardController::update/$1');
     });
 
     $routes->group('utilisateurs', function ($routes) {
