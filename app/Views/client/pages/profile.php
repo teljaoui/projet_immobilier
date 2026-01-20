@@ -30,9 +30,9 @@
             <p><strong>Nom complet :</strong> <?= session()->get('user_name') ?></p>
             <p class=" mb-6"><strong>Email :</strong> <?= session()->get('user_email') ?></p>
             <div class="flex justify-end gap-4">
-                <a href="<?= base_url('commandes') ?>"
+                <a href="<?= base_url('client/demandes') ?>"
                     class="bg-gray-900 hover:bg-gray-800  text-white px-4 py-2 rounded hover:bg-[#e64910] transition duration-500">
-                    Mes Commandes
+                    Mes demandes
                 </a>
                 <form action="<?= base_url('logout') ?>" method="POST" class="inline">
                     <?= csrf_field() ?>

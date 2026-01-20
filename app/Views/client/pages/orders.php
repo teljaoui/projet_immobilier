@@ -20,7 +20,8 @@
             <div class="text-center py-12 bg-white rounded-lg shadow">
                 <i class="fa-solid fa-calendar-xmark text-gray-300 text-6xl mb-4"></i>
                 <p class="text-gray-500 text-lg mb-4">Vous n’avez encore aucune demande de visite.</p>
-                <a href="<?= base_url('biens') ?>" class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition">
+                <a href="<?= base_url('biens') ?>"
+                    class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition">
                     <i class="fa-solid fa-search mr-2"></i>Découvrir nos biens
                 </a>
             </div>
@@ -34,13 +35,20 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-100">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bien</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Localisation</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message client</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Réponse agent</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bien
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ville
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Message client</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Réponse agent</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -48,19 +56,35 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $index + 1 ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                    <a href="<?= base_url('bien/' . $order['property_id']) ?>" class="text-primary hover:underline">
+                                    <a href="<?= base_url('bien/' . $order['property_id']) ?>"
+                                        class="text-primary hover:underline">
                                         <?= esc($order['property_title']) ?>
                                     </a>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= esc($order['city'] ?? '-') ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"><?= esc($order['client_message']) ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= esc($order['city'] ?? '-') ?>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700 break-words">
+                                    <?= esc($order['client_message']) ?>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700 break-words">
                                     <?= !empty($order['agent_message']) ? esc($order['agent_message']) : '-' ?>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold 
-                                    <?= $order['status'] === 'pending' ? 'text-yellow-600' : ($order['status'] === 'accepted' ? 'text-green-600' : 'text-red-600') ?>">
-                                    <?= esc($order['status']) ?>
+
+                                <td
+                                    class="px-6 py-4 whitespace-nowrap text-sm font-semibold 
+    <?= $order['status'] === 'pending' ? 'text-yellow-600' : ($order['status'] === 'accepted' ? 'text-green-600' : 'text-red-600') ?>">
+
+                                    <?php
+                                    $status_fr = [
+                                        'pending' => 'En attente',
+                                        'accepted' => 'Accepté',
+                                        'rejected' => 'Refusé'
+                                    ];
+                                    ?>
+
+                                    <?= esc($status_fr[$order['status']] ?? $order['status']) ?>
                                 </td>
+
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <?= date('d/m/Y H:i', strtotime($order['created_at'])) ?>
                                 </td>

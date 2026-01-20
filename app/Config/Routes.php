@@ -28,7 +28,7 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], function ($routes)
 $routes->group('client', ['filter' => 'auth', 'namespace' => 'App\Controllers\Client'], function ($routes) {
     $routes->get('/', 'ClientController::index');
     $routes->post('demande-visite', 'ClientController::store');
-    $routes->get('commandes', 'ClientController::orders');
+    $routes->get('demandes', 'ClientController::orders');
 });
 
 

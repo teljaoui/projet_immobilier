@@ -65,6 +65,7 @@ class ClientController extends BaseController
                 'order_id' => $order['id'],
                 'property_id' => $order['property_id'],
                 'property_title' => $property['title'] ?? 'Bien supprimé',
+                'city'=>$property['city'],
                 'client_message' => $order['client_message'],
                 'agent_message' => $order['agent_message'] ?? '',
                 'status' => $order['status'],
