@@ -78,6 +78,23 @@
                     </div>
 
                     <div>
+                        <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">
+                            Numéro de téléphone
+                        </label>
+                        <input type="text" id="phone_number" name="phone_number" required
+                            value="<?= old('phone_number') ?>"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff551a] focus:border-transparent transition"
+                            placeholder="06 12 34 56 78">
+
+                        <?php if (isset($validation) && $validation->hasError('phone_number')): ?>
+                            <p class="text-red-500 text-xs mt-1">
+                                <?= $validation->getError('phone_number') ?>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+
+
+                    <div>
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
                         <div class="relative">
                             <input type="password" id="password" name="password" required

@@ -32,6 +32,7 @@ class LoginController extends BaseController
             'lastName' => 'required|min_length[2]|max_length[100]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[6]',
+            'phone_number' => 'required|numeric|min_length[8]|max_length[15]'
         ];
 
         if (!$this->validate($rules)) {
@@ -50,6 +51,7 @@ class LoginController extends BaseController
                 $this->request->getPost('password'),
                 PASSWORD_DEFAULT
             ),
+            'phone_number' => $this->request->getPost('phone_number'),
             'role' => 'client'
         ]);
 
