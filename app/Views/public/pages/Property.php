@@ -183,7 +183,7 @@
                         ? base_url($property['image'])
                         : base_url('assets/img/placeholder.jpg');
                     ?>
-                    <div class="max-w-sm mx-auto mx-h-100 mt-8">
+                    <div class="max-w-sm mx-auto mx-h-100  mt-8">
                         <div
                             class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">
 

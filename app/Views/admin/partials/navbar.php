@@ -48,7 +48,6 @@
 
         </ul>
 
-        <!-- LOGOUT -->
         <div class="flex items-center gap-4">
             <form action="<?= base_url('logout') ?>" method="POST">
                 <?= csrf_field() ?>
