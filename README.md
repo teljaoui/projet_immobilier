@@ -72,10 +72,17 @@ php spark db:seed MainSeeder
 
 * **Client** : possibilité de créer un compte directement depuis la plateforme.
 
----
 
 ## Lancer l’application
 
-1. Configurer le serveur web pour **pointer vers le dossier `public`**.
-2. Accéder au projet via navigateur :
+1. Démarrer le serveur intégré de CodeIgniter depuis le terminal à la racine du projet :
 
+```bash
+php spark serve
+```
+
+2. Ouvrir le navigateur et accéder à l’application :
+
+```
+http://localhost:8080
+```
