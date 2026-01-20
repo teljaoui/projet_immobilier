@@ -16,8 +16,51 @@ class PropertyController extends BaseController
         $propertyModel = new PropertyModel();
         $imageModel = new PropertyImageModel();
         $typeModel = new PropertyTypeModel();
+        $cities = $propertyModel->select('city')->distinct()->orderBy('city', 'ASC')->findAll();
 
-        $properties = $propertyModel->findAll();
+
+        $transaction_type = $this->request->getGet('transaction_type');
+        $type_id = $this->request->getGet('type_id');
+        $city = $this->request->getGet('city');
+        $price_min = $this->request->getGet('price_min');
+        $price_max = $this->request->getGet('price_max');
+        $surface_min = $this->request->getGet('surface_min');
+        $bedrooms_min = $this->request->getGet('bedrooms_min');
+        $bathrooms_min = $this->request->getGet('bathrooms_min');
+        $rooms_min = $this->request->getGet('rooms_min');
+
+        $builder = $propertyModel;
+
+        if (!empty($transaction_type)) {
+            $builder = $builder->where('transaction_type', $transaction_type);
+        }
+        if (!empty($type_id)) {
+            $builder = $builder->where('type_id', $type_id);
+        }
+        if (!empty($city)) {
+            $builder = $builder->where('city', $city);
+        }
+        if (!empty($price_min)) {
+            $builder = $builder->where('price >=', $price_min);
+        }
+        if (!empty($price_max)) {
+            $builder = $builder->where('price <=', $price_max);
+        }
+        if (!empty($surface_min)) {
+            $builder = $builder->where('surface >=', $surface_min);
+        }
+        if (!empty($bedrooms_min)) {
+            $builder = $builder->where('bedrooms >=', $bedrooms_min);
+        }
+        if (!empty($bathrooms_min)) {
+            $builder = $builder->where('bathrooms >=', $bathrooms_min);
+        }
+        if (!empty($rooms_min)) {
+            $builder = $builder->where('rooms >=', $rooms_min);
+        }
+
+        $properties = $builder->orderBy('created_at', 'DESC')->findAll();
+
         foreach ($properties as &$property) {
             $image = $imageModel
                 ->where('property_id', $property['id'])
@@ -29,11 +72,16 @@ class PropertyController extends BaseController
             $property['type_name'] = $type['name'] ?? 'Non défini';
         }
 
+        $propertyTypes = $typeModel->findAll();
+
         return view('public/pages/property', [
             'title' => 'Nos biens immobiliers',
-            'properties' => $properties
+            'properties' => $properties,
+            'propertyTypes' => $propertyTypes,
+            'cities' => $cities
         ]);
     }
+
     public function index_cart()
     {
         $propertyModel = new PropertyModel();

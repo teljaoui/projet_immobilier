@@ -17,19 +17,18 @@
         <p class="text-lg md:text-xl mb-10">
             Trouvez votre propriété idéale rapidement grâce à notre moteur de recherche performant.
         </p>
-
-        <form action="/search" method="GET" class="bg-white text-gray-800 rounded-lg p-6 shadow-lg">
+        <form action="<?= base_url('biens') ?>" method="GET" class="bg-white text-gray-800 rounded-lg p-6 shadow-lg">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4">
-
                 <div class="md:col-span-4">
                     <select name="type_id"
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
                         <option value="">Type de bien</option>
-                        <?php /* foreach ($types as $type): ?>
-                  <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                  <?php endforeach; */ ?>
+                        <?php foreach ($typeModel->findAll() as $type): ?>
+                            <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
+
                 <div class="md:col-span-3">
                     <select name="transaction_type"
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
@@ -38,17 +37,20 @@
                         <option value="location">Location</option>
                     </select>
                 </div>
+
                 <div class="md:col-span-4">
-                    <select name="transaction_type"
+                    <select name="city"
                         class="w-full bg-gray-100 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:border-primary focus:border-2 transition">
                         <option value="">Ville</option>
-                        <option value="vente">Rabat</option>
-                        <option value="location">Temara</option>
+                        <?php foreach ($cities as $city): ?>
+                            <option value="<?= $city['city'] ?>"><?= $city['city'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
+
                 <div class="md:col-span-1 flex items-center">
                     <button type="submit"
-                        class="w-full bg-gray-900 hover:bg-gray-800 text-white p-3 rounded-lg  transition duration-500 flex items-center justify-center">
+                        class="w-full bg-gray-900 hover:bg-gray-800 text-white p-3 rounded-lg transition duration-500 flex items-center justify-center">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -180,12 +182,12 @@
 
             <?php if (!empty($properties)): ?>
                 <?php foreach ($properties as $property): ?>
-                  <?php
+                    <?php
                     $Image = !empty($property['image'])
-                        ? base_url( $property['image'])
-                        : base_url('assets/img/placeholder.jpg'); 
+                        ? base_url($property['image'])
+                        : base_url('assets/img/placeholder.jpg');
                     ?>
-                    
+
                     <div class="max-w-sm mx-auto mx-h-100 mt-8">
                         <div
                             class="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 transform hover:-translate-y-1">

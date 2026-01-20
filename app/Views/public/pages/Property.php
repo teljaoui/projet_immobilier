@@ -31,7 +31,7 @@
         </div>
         <div id="filterForm"
             class="bg-white rounded-lg shadow-lg p-6 mb-10 hidden overflow-hidden transition-all duration-500">
-            <form action="<?= base_url('properties') ?>" method="GET" class="space-y-6">
+            <form action="<?= base_url('biens') ?>" method="GET" class="space-y-6">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -74,13 +74,13 @@
                         <select id="city" name="city"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
                             <option value="">Toutes les villes</option>
-                            <option value="Rabat" <?= (isset($_GET['city']) && $_GET['city'] == 'Rabat') ? 'selected' : '' ?>>Rabat</option>
-                            <option value="Casablanca" <?= (isset($_GET['city']) && $_GET['city'] == 'Casablanca') ? 'selected' : '' ?>>Casablanca</option>
-                            <option value="Marrakech" <?= (isset($_GET['city']) && $_GET['city'] == 'Marrakech') ? 'selected' : '' ?>>Marrakech</option>
-                            <option value="Tanger" <?= (isset($_GET['city']) && $_GET['city'] == 'Tanger') ? 'selected' : '' ?>>Tanger</option>
-                            <option value="Fès" <?= (isset($_GET['city']) && $_GET['city'] == 'Fès') ? 'selected' : '' ?>>
-                                Fès</option>
-                            <option value="Agadir" <?= (isset($_GET['city']) && $_GET['city'] == 'Agadir') ? 'selected' : '' ?>>Agadir</option>
+                            <?php if (!empty($cities)): ?>
+                                <?php foreach ($cities as $c): ?>
+                                    <option value="<?= esc($c['city']) ?>" <?= (isset($_GET['city']) && $_GET['city'] == $c['city']) ? 'selected' : '' ?>>
+                                        <?= esc($c['city']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div>
@@ -166,7 +166,7 @@
                         <i class="fa-solid fa-search"></i>
                         Rechercher
                     </button>
-                    <a href="<?= base_url('properties') ?>"
+                    <a href="<?= base_url('biens') ?>"
                         class="flex-1 sm:flex-none bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-rotate-right"></i>
                         Réinitialiser
@@ -179,7 +179,7 @@
             <?php if (!empty($properties)): ?>
                 <?php foreach ($properties as $property): ?>
                     <?php
-                    $Image = !empty($property['image']) 
+                    $Image = !empty($property['image'])
                         ? base_url($property['image'])
                         : base_url('assets/img/placeholder.jpg');
                     ?>
@@ -191,7 +191,7 @@
                                 class="group relative block rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-500">
                                 <div
                                     class="relative h-64 bg-gray-200 overflow-hidden group-hover:bg-primary transition duration-500">
-                                    <img src="<?= esc(  $Image) ?>" alt="<?= esc($property['title']) ?>"
+                                    <img src="<?= esc($Image) ?>" alt="<?= esc($property['title']) ?>"
                                         class="w-full h-full object-cover group-hover:brightness-50 transition duration-500">
 
                                     <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">

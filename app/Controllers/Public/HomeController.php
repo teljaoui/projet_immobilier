@@ -16,6 +16,8 @@ class HomeController extends BaseController
         $imageModel = new PropertyImageModel();
         $typeModel = new PropertyTypeModel();
         $properties = $propertyModel->orderBy('created_at', 'DESC')->findAll(6);
+        $cities = $propertyModel->select('city')->distinct()->orderBy('city', 'ASC')->findAll();
+
 
         foreach ($properties as &$property) {
             $image = $imageModel
@@ -30,7 +32,9 @@ class HomeController extends BaseController
 
         return view('public/pages/home', [
             'title' => 'Accueil',
-            'properties' => $properties
+            'properties' => $properties,
+            'typeModel' => $typeModel,
+            'cities' => $cities
         ]);
     }
 }
